@@ -1,0 +1,207 @@
+.wrapper {
+position: relative;
+width: 380px;
+height: 550px;
+background: linear-gradient(135deg, #2a2d3e, #1a1c28);
+border: 2px solid rgba(103, 128, 255, 0.2);
+backdrop-filter: blur(30px);
+border-radius: 20px;
+color: #f8f9fa;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+overflow: hidden;
+margin: 0 auto;
+transition: all 0.3s ease;
+}
+
+.form-box {
+width: 100%;
+padding: 30px;
+background: rgba(27, 30, 44, 0.85);
+border-radius: 12px;
+box-sizing: border-box;
+}
+
+.hidden {
+display: none;
+}
+
+form h1 {
+font-size: 28px;
+text-align: center;
+margin-bottom: 20px;
+color: #6d8bff;
+font-weight: 600;
+letter-spacing: 0.5px;
+}
+
+form .input-box {
+position: relative;
+width: 100%;
+height: 48px;
+margin-bottom: 20px;
+}
+
+.input-box input,
+.input-box select {
+width: 100%;
+height: 100%;
+background: rgba(255, 255, 255, 0.05);
+border: 2px solid rgba(103, 128, 255, 0.15);
+border-radius: 12px;
+font-size: 15px;
+color: #f8f9fa;
+padding: 0 42px 0 18px;
+box-sizing: border-box;
+transition: all 0.3s;
+}
+
+.input-box input:focus,
+.input-box select:focus {
+border-color: #6d8bff;
+outline: none;
+box-shadow: 0 0 0 3px rgba(109, 139, 255, 0.2);
+}
+
+.input-box input::placeholder {
+color: #a0a5b1;
+}
+
+.input-box select {
+padding: 10px 18px;
+appearance: none;
+cursor: pointer;
+}
+
+.input-box select option {
+background-color: #2a2d3e;
+color: #f8f9fa;
+padding: 10px;
+}
+
+.input-box .icon {
+position: absolute;
+right: 18px;
+top: 50%;
+transform: translateY(-50%);
+font-size: 16px;
+color: #6d8bff;
+pointer-events: none;
+}
+
+form .remember-forgot {
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 13px;
+margin-bottom: 20px;
+color: #a0a5b1;
+}
+
+.remember-forgot label {
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+
+.remember-forgot label input {
+accent-color: #6d8bff;
+margin-right: 6px;
+cursor: pointer;
+}
+
+.remember-forgot a {
+color: #6d8bff;
+text-decoration: none;
+font-weight: 500;
+transition: color 0.2s;
+}
+
+.remember-forgot a:hover {
+color: #8ca2ff;
+text-decoration: underline;
+}
+
+form button {
+width: 100%;
+height: 45px;
+background: linear-gradient(to right, #5c7cfa, #6d8bff);
+border: none;
+border-radius: 12px;
+font-size: 15px;
+color: #ffffff;
+font-weight: 600;
+cursor: pointer;
+margin-bottom: 18px;
+transition: all 0.3s ease;
+box-shadow: 0 4px 10px rgba(109, 139, 255, 0.3);
+letter-spacing: 0.5px;
+}
+
+form button:hover {
+background: linear-gradient(to right, #4263eb, #5c7cfa);
+transform: translateY(-2px);
+box-shadow: 0 6px 15px rgba(109, 139, 255, 0.4);
+}
+
+form button:active {
+transform: translateY(0);
+box-shadow: 0 2px 5px rgba(109, 139, 255, 0.3);
+}
+
+form .Register-link {
+text-align: center;
+font-size: 14px;
+color: #a0a5b1;
+}
+
+.Register-link p a {
+color: #6d8bff;
+font-weight: 600;
+text-decoration: none;
+margin-left: 5px;
+transition: color 0.2s;
+}
+
+.Register-link p a:hover {
+color: #8ca2ff;
+text-decoration: underline;
+}
+
+.wrapper .form-box.login {
+transition: transform 0.5s ease, opacity 0.5s ease;
+transform: translateX(0);
+opacity: 1;
+}
+
+.wrapper .form-box.register {
+position: absolute;
+transition: transform 0.5s ease, opacity 0.5s ease;
+transform: translateX(400px);
+opacity: 0;
+}
+
+.wrapper.active .form-box.login {
+transform: translateX(-400px);
+opacity: 0;
+}
+
+.wrapper.active .form-box.register {
+transform: translateX(0);
+opacity: 1;
+}
+
+@media (max-width: 450px) {
+.wrapper {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    padding: 20px 0;
+}
+
+.form-box {
+    padding: 25px 16px;
+}
+}
