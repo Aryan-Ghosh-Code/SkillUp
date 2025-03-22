@@ -10,3 +10,4 @@ nodemon
 helmet
 body-parser
 cookie-parser
+cors
