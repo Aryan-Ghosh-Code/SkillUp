@@ -41,7 +41,8 @@ const Login = () => {
 
     const handleForgotPassword = () => {
 
-        alert('Redirecting to forgot password page...');
+        navigate('/forgot-password');
+
     };
 
     return (

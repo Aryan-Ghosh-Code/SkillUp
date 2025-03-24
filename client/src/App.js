@@ -1,6 +1,8 @@
 // import LoginRegister from './Components/Login_Register/LoginRegister';
 import {Routes, Route} from 'react-router-dom';
 import Login from './Components/Login_Register/Login'; 
+import ForgotPassword from './Components/Login_Register/ForgotPassword'; 
+
 import Register from './Components/Login_Register/Register'; 
 
 
@@ -10,7 +12,9 @@ function App() {
       <Routes>
         <Route path = '/login' element = {<Login/>  } />
         <Route path = '/register' element = {<Register/>  } />
-      </Routes> 
+        <Route path = '/forgot-password' element = {<ForgotPassword/>  } />
+      </Routes>
+
   </div>
   );
 }
