@@ -10,6 +10,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const navigate = useNavigate();
+    const API_URL=import.meta.env.VITE_API_URL;
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -24,7 +25,7 @@ const Login = () => {
             localStorage.removeItem('password');
         }
 
-        axios.post('http://localhost:5000/api/auth/login', loginData)
+        axios.post(`${API_URL}/api/auth/login`, loginData)
             .then((response) => {
                 if (response.status === 200) {
                     alert('Login successful!');

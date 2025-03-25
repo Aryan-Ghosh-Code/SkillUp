@@ -14,6 +14,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [agree, setAgree] = useState(false);
     const navigate = useNavigate();
+    const API_URL=import.meta.env.VITE_API_URL;
 
     const isGmailFormat = (email) => {
     const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
@@ -50,7 +51,7 @@ const handleRegister = (e) => {
         password,
     };
 
-    axios.post('http://localhost:5000/api/auth/register', userData)
+    axios.post(`${API_URL}/api/auth/register`, userData)
         .then((response) => {
         if (response.status === 201) {
             alert('Registration successful!');
