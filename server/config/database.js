@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
+
 const connectDB = async () =>{
+    const MONGODB_URI=process.env.MONGODB_URI
     try
     {
-    const conn = await mongoose.connect("mongodb://localhost:27017/DTI");
+    const conn = await mongoose.connect(MONGODB_URI);
     console.log(`MongoDB connected: ${conn.connection.host}`);
     } 
     catch (error) 
