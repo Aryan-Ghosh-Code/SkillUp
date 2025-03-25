@@ -1,11 +1,11 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
-const connectDB = require('./config/database');
-const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');
-const courseRoutes = require('./routes/courseRoutes');
-const { errorHandler } = require('./middlewares/errorMiddleware');
+const connectDB = require('./server/config/database');
+const authRoutes = require('./server/routes/authRoutes');
+const userRoutes = require('./server/routes/userRoutes');
+const courseRoutes = require('./server/routes/courseRoutes');
+const { errorHandler } = require('./server/middlewares/errorMiddleware');
 const cors = require('cors');
 
 const app = express();
