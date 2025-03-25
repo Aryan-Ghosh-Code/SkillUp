@@ -7,11 +7,21 @@ const userRoutes = require('./server/routes/userRoutes');
 const courseRoutes = require('./server/routes/courseRoutes');
 const { errorHandler } = require('./server/middlewares/errorMiddleware');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../frontend/dist')));  // ✅ Correct path
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, '../frontend', 'dist', 'index.html'));
+    });
+  }
 
 app.get("/", () => {
     res.send("Server up & Running");
