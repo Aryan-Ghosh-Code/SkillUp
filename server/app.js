@@ -13,10 +13,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", () => {
+    res.send("Server up & Running");
+}) 
+
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/courses', courseRoutes);
-
 
 app.use(errorHandler);
 
