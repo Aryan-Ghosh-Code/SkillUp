@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaExchangeAlt, FaUserFriends, FaLightbulb, FaQuoteLeft  } from 'react-icons/fa';
+import { FaQuoteLeft  } from 'react-icons/fa';
+import { Link,  animateScroll as scroll, scroller} from 'react-scroll';
 import './LandingPage.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -47,6 +48,14 @@ const LandingPage = () => {
         };
     }, []);
 
+    const handleLearnMoreClick = () => {
+        // Scroll to the "How SkillUp Works" section
+        scroller.scrollTo('Features', {
+            smooth: 'true',
+            duration: 500,
+        });
+    };
+
     const testimonials = [
         {
             name: "Arjun Kumar",
@@ -65,6 +74,12 @@ const LandingPage = () => {
             role: "Marketing Specialist",
             quote: "Such an innovative way to learn and grow professionally!",
             image: "/api/placeholder/80/80"
+        },
+        {
+            name: "Sophia W.",
+            role: "UX Designer",
+            quote: "SkillSwap has transformed the way I learn and collaborate with others. The platform is amazing!",
+            image: "/api/placeholder/80/80"
         }
     ];
 
@@ -72,6 +87,7 @@ const LandingPage = () => {
         <div className="landing-page">
             {/* Hero Section */}
             <section 
+                
                 ref={heroRef}
                 className="hero-section animate__animated animate__fadeIn" 
             >
@@ -87,7 +103,7 @@ const LandingPage = () => {
                         </button>
                         <button 
                             className="secondary pulse-hover" 
-                            onClick={() => navigate('/how-it-works')}
+                            onClick={handleLearnMoreClick}
                         >
                             Learn More
                         </button>
@@ -97,26 +113,37 @@ const LandingPage = () => {
 
             {/* Features Section */}
             <section 
+                id="Features"
                 ref={featuresRef}
                 className="features-section"
             >
-                <h2>Why SkillSwap?</h2>
+                <h2>Why SkillUp?</h2>
                 <div className="features-grid">
                     {[
-                        { 
-                            icon: <FaExchangeAlt />, 
-                            title: "Skill Exchange", 
-                            description: "Directly trade skills with professionals across various domains."
-                        },
-                        { 
-                            icon: <FaUserFriends />, 
-                            title: "Networking", 
-                            description: "Build meaningful professional connections globally."
-                        },
-                        { 
-                            icon: <FaLightbulb />, 
-                            title: "Continuous Learning", 
-                            description: "Never stop growing with personalized skill swap opportunities."
+                        {
+                            title: 'Personalized Learning Paths',
+                            description: 'Tailored learning paths based on your goals and interests, providing adaptive suggestions for continuous growth.',
+                            icon: '📚'
+                            },
+                            {
+                            title: 'Verified Mentors and Learners',
+                            description: 'Connect with verified mentors and experienced professionals to ensure authentic and meaningful skill exchanges.',
+                            icon: '✅'
+                            },
+                            {
+                            title: 'Flexible Scheduling',
+                            description: 'Schedule learning and mentoring sessions at your convenience.',
+                            icon: '📅'
+                            },
+                            {
+                            title: 'Skill Endorsements and Badges',
+                            description: 'Earn endorsements from mentors to build credibility and display achievement badges on your profile.',
+                            icon: '🏅'
+                            },
+                            {
+                            title: 'Community and Networking',
+                            description: 'Join vibrant learning communities, participate in discussions, and attend virtual meetups to collaborate on projects.',
+                            icon: '🌐'
                         }
                     ].map((feature, index) => (
                         <div 
@@ -133,15 +160,18 @@ const LandingPage = () => {
 
             {/* How It Works Section */}
             <section 
+                id="How it Works?"
                 ref={howItWorksRef}
                 className="how-it-works"
             >
-                <h2>How SkillSwap Works</h2>
+                <h2>How SkillUp Works?</h2>
                 <div className="steps-container">
                     {[
-                        { number: "1", title: "Create Profile", description: "Set up your profile and showcase your skills." },
-                        { number: "2", title: "Find Match", description: "Browse and connect with skill exchange partners." },
-                        { number: "3", title: "Learn & Grow", description: "Exchange knowledge through structured sessions." }
+                        { number: "1", title: "Create Profile📋", description: "Set up your profile and showcase your skills." },
+                        { number: "2", title: "Find Match🔍", description: "Browse and connect with skill exchange partners." },
+                        { number: "3", title: "Learn & Grow🎓", description: "Exchange knowledge through structured sessions." },
+                        { number: "4", title: "Earn Credits🏅", description: "Receive credits for your skills after each session." }, 
+                        { number: "5", title: "Track Your Progress📊", description: "Monitor your learning and skill growth over time." }
                     ].map((step, index) => (
                         <div 
                             key={index} 
@@ -157,10 +187,11 @@ const LandingPage = () => {
 
             {/* Testimonials Section */}
             <section 
+                id="Testimonials"   
                 ref={testimonialsRef}
                 className="testimonials-section"
             >
-                <h2>What Our Users Say</h2>
+                <h2>Testimonials</h2>
                 <div className="testimonials-grid">
                     {testimonials.map((testimonial, index) => (
                         <div 
@@ -180,9 +211,7 @@ const LandingPage = () => {
                     ))}
                 </div>
             </section>
-
-            {/* Rest of the sections remain the same */}
-        </div>
+    </div>
     );
 };
 

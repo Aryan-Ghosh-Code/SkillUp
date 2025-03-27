@@ -1,14 +1,16 @@
 :root {
-  --primary-color: #6d8bff;
-  --secondary-color: #5c7cfa;
+  --primary-color: #000103;
+  --secondary-color: #2045db;
   --background-dark: #1a1c28;
   --text-light: #f8f9fa;
   --text-muted: #a0a5b1;
 }
 
 .landing-page {
-  background: linear-gradient(135deg, #2a2d3e, #1a1c28);
-  color: var(--text-light);
+  background: linear-gradient(135deg, #000000, #313d80);
+  background-size: cover;
+  background-attachment: fixed;
+  color:var(--text-light);
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   position: relative;
@@ -23,7 +25,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-image: url('E:/Projects/SkillUp DTI/SkillUp/client/src/Components/Assets/bg.jpg');
+  /* background-image: url('E:/Projects/SkillUp DTI/SkillUp/client/src/Components/Assets/bg.jpg'); */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -39,15 +41,17 @@
 
 .hero-section h1 {
   font-size: 3.5rem;
-  color: var(--primary-color);
+  color: rgb(230, 230, 238);
   margin-bottom: 20px;
   letter-spacing: 1px;
+  text-shadow: 0 0 5px #000000, 0 0 10px #021416, 0 0 20px #02171a, 0 0 40px #5c2183;
 }
 
 .hero-section p {
-  font-size: 1.2rem;
+  font-size: 2.0rem;
   color: var(--text-light);
   margin-bottom: 40px;
+  text-shadow: 0 0 5px #000000, 0 0 10px #021416, 0 0 20px #02171a, 0 0 40px #5c2183;
 }
 
 .hero-cta {
@@ -67,13 +71,12 @@
 
 .hero-cta button:first-child {
   background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .hero-cta button.secondary {
-  background: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  color: rgb(255, 255, 255);
 }
 
 /* Features Section */
@@ -89,7 +92,7 @@
 .how-it-works h2,
 .testimonials-section h2,
 .cta-section h2 {
-  color: var(--primary-color);
+  color: whitesmoke;
   margin-bottom: 50px;
 }
 
@@ -107,12 +110,12 @@
 }
 
 .feature-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-15px);
 }
 
 .feature-icon {
   font-size: 3rem;
-  color: var(--primary-color);
+  color: rgb(194, 160, 226);
   margin-bottom: 20px;
 }
 
@@ -127,6 +130,7 @@
   background: rgba(27, 30, 44, 0.85);
   padding: 30px;
   border-radius: 15px;
+  transition: transform 0.3s ease;
   position: relative;
 }
 
@@ -135,7 +139,7 @@
   top: -15px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--primary-color);
+  background: rgb(29, 25, 32);
   color: white;
   width: 50px;
   height: 50px;
@@ -144,6 +148,10 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
+}
+
+.step:hover {
+  transform: translateY(-15px);
 }
 
 /* Testimonials Section */
@@ -158,6 +166,12 @@
   border-radius: 15px;
   position: relative;
   text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover
+{
+  transform: translateY(-15px);
 }
 
 .quote-icon {

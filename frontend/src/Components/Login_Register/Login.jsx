@@ -77,7 +77,7 @@ const Login = () => {
                             checked={rememberMe}
                             onChange={(e) => setRememberMe(e.target.checked)}
                         />{" "}
-                        Remember me
+                        Remember Me
                     </label>
                     <a href='#' onClick={handleForgotPassword}>
                         Forgot Password?
@@ -86,10 +86,7 @@ const Login = () => {
                 <button type='submit'>LogIn</button>
                 <div className='Register-link'>
                     <p>
-                        Don't have an account?{" "}
-                        <button type="button" onClick={() => { navigate("/register")}}>
-                            Register
-                        </button>
+                        Don't have an account?<a href='#' onClick={() => { navigate("/register")}}>Register</a>
                     </p>
                 </div>
             </form>

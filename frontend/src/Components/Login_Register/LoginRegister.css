@@ -1,4 +1,4 @@
-.wrapper {
+/* .wrapper { No wrapper class exists so non-functional
 position: relative;
 width: 380px;
 height: 550px;
@@ -14,13 +14,14 @@ box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 overflow: hidden;
 margin: 0 auto;
 transition: all 0.3s ease;
-}
+} */
 
 .form-box {
-width: 100%;
+width: 380px;
 padding: 30px;
 background: rgba(27, 30, 44, 0.85);
 border-radius: 12px;
+backdrop-filter: blur(30px);
 box-sizing: border-box;
 }
 
@@ -32,7 +33,7 @@ form h1 {
 font-size: 28px;
 text-align: center;
 margin-bottom: 20px;
-color: #6d8bff;
+color: #c7cde6;
 font-weight: 600;
 letter-spacing: 0.5px;
 }

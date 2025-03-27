@@ -125,10 +125,10 @@ const handleRegister = (e) => {
         <button type='submit'>Register</button>
         <div className='Register-link'>
             <p>
-            Already have an account?{" "}
-            <button type="button" onClick={ () => {navigate("/login")}}>
+            Already have an account?<a href='#' onClick={() => { navigate("/login")}}>LogIn</a>
+            {/* <button type="button" onClick={ () => {navigate("/login")}}>
                 LogIn
-            </button>
+            </button> */}
             </p>
         </div>
         </form>
