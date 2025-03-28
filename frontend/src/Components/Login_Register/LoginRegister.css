@@ -194,6 +194,25 @@ transform: translateX(0);
 opacity: 1;
 }
 
+form .Go-Back-link {
+    text-align: center;
+    font-size: 14px;
+    color: #a0a5b1;
+    }
+    
+    .Go-Back-link p a {
+    color: #6d8bff;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 5px;
+    transition: color 0.2s;
+    }
+    
+    .Go-Back-link p a:hover {
+    color: #8ca2ff;
+    text-decoration: underline;
+    }
+
 @media (max-width: 450px) {
 .wrapper {
     width: 100%;

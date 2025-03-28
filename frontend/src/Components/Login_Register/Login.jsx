@@ -89,6 +89,11 @@ const Login = () => {
                         Don't have an account?<a href='#' onClick={() => { navigate("/register")}}>Register</a>
                     </p>
                 </div>
+                <div className='Go-Back-link'>
+                    <p>
+                        Go Back?<a href='#' onClick={() => { navigate("/")}}>Home</a>
+                    </p>
+                </div>
             </form>
         </div>
     );

@@ -131,6 +131,11 @@ const handleRegister = (e) => {
             </button> */}
             </p>
         </div>
+        <div className='Go-Back-link'>
+                    <p>
+                        Go Back?<a href='#' onClick={() => { navigate("/")}}>Home</a>
+                    </p>
+                </div>
         </form>
     </div>
     );

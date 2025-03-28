@@ -10,7 +10,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url(./Components/Assets/bg.jpg) no-repeat;
+  background: linear-gradient(135deg, #000000, #313d80);;
+  /* background: url(./Components/Assets/bg.jpg); */
   background-size: cover;
   background-position: center;
 }

@@ -44,14 +44,24 @@
   color: rgb(230, 230, 238);
   margin-bottom: 20px;
   letter-spacing: 1px;
-  text-shadow: 0 0 5px #000000, 0 0 10px #021416, 0 0 20px #02171a, 0 0 40px #5c2183;
+  text-shadow: 0 0 50px #000107, 0 0 40px #b6c8ca, 0 0 20px #02171a, 0 0 40px #5c2183;
+  transition: transform 0.3s ease;
 }
 
 .hero-section p {
   font-size: 2.0rem;
   color: var(--text-light);
   margin-bottom: 40px;
-  text-shadow: 0 0 5px #000000, 0 0 10px #021416, 0 0 20px #02171a, 0 0 40px #5c2183;
+  text-shadow: 0 0 50px #000107, 0 0 40px #b6c8ca, 0 0 20px #02171a, 0 0 40px #5c2183;
+  transition: transform 0.3s ease;
+}
+
+.hero-section h1:hover {
+  transform: translateY(-15px);
+}
+
+.hero-section p:hover {
+  transform: translateY(-15px);
 }
 
 .hero-cta {
@@ -61,6 +71,34 @@
 }
 
 .hero-cta button {
+  width: 35%;
+  height: 45px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(109, 139, 255, 0.3);
+  letter-spacing: 0.5px;
+  }
+  
+  .hero-cta button:hover {
+  /* background: linear-gradient(to right, #4263eb, #5c7cfa); */
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(109, 139, 255, 0.4);
+  }
+  
+  .hero-cta button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(109, 139, 255, 0.3);
+  }
+
+/* .hero-cta button {
   padding: 12px 30px;
   border: none;
   border-radius: 8px;
@@ -77,7 +115,7 @@
 .hero-cta button.secondary {
   background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   color: rgb(255, 255, 255);
-}
+} */
 
 /* Features Section */
 .features-section, 
@@ -208,7 +246,7 @@
   text-align: center;
 }
 
-.cta-section button {
+/* .cta-section button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,7 +259,7 @@
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-}
+} */
 
 /* Footer */
 .landing-footer {
