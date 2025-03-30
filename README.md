@@ -1,4 +1,7 @@
 #SkillUp
 Lets skill up!!
-Contributors: 
+Contributors:-
 Titas Kabiraj
+Sagnik Basak
+Aryan Ghosh
+Srijit Roy
