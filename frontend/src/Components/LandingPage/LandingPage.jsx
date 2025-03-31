@@ -52,14 +52,14 @@ const LandingPage = () => {
         // Scroll to the "How SkillUp Works" section
         scroller.scrollTo('Features', {
             smooth: 'true',
-            duration: 500,
+            duration: 5,
         });
     };
 
     const testimonials = [
         {
             name: "Arjun Kumar",
-            role: "Data Enthusiast, Certified Data analyst",
+            role: "Certified Data analyst",
             quote: "SkillSwap helped me learn programming while teaching design to a developer. It's an incredible platform!",
             image: "/api/placeholder/80/80"
         },
@@ -96,16 +96,16 @@ const LandingPage = () => {
                     <p className="animate__animated animate__slideInUp">Connect. Learn. Grow. Exchange knowledge seamlessly with professionals worldwide.</p>
                     <div className="hero-cta animate__animated animate__zoomIn">
                         <button 
-                            onClick={() => navigate('/register')}
+                            onClick={() => navigate('/login')}
                             className="pulse-hover"
                         >
-                            Get Started
+                            Get Started🚀
                         </button>
                         <button 
                             className="secondary pulse-hover" 
                             onClick={handleLearnMoreClick}
                         >
-                            Learn More
+                            Learn Moreℹ️
                         </button>
                     </div>
                 </div>
