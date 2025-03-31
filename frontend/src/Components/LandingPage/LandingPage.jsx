@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaQuoteLeft  } from 'react-icons/fa';
-import { Link,  animateScroll as scroller} from 'react-scroll';
+import { Link,  animateScroll as scroll, scroller} from 'react-scroll';
 import './LandingPage.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -96,7 +96,7 @@ const LandingPage = () => {
                     <p className="animate__animated animate__slideInUp">Connect. Learn. Grow. Exchange knowledge seamlessly with professionals worldwide.</p>
                     <div className="hero-cta animate__animated animate__zoomIn">
                         <button 
-                            onClick={() => navigate('/register')}
+                            onClick={() => navigate('/login')}
                             className="pulse-hover"
                         >
                             Get Started🚀
