@@ -50,7 +50,7 @@
 
 .hero-section p {
   font-size: 2.0rem;
-  color: var(--text-light);
+  color:rgb(213, 194, 231);
   margin-bottom: 40px;
   text-shadow: 0 0 50px #000107, 0 0 40px #b6c8ca, 0 0 20px #02171a, 0 0 40px #5c2183;
   transition: transform 0.3s ease;
@@ -262,7 +262,7 @@
 } */
 
 /* Footer */
-.landing-footer {
+/* .landing-footer {
   background: var(--background-dark);
   padding: 50px;
   text-align: center;
@@ -288,7 +288,7 @@
 
 .footer-links a:hover {
   color: var(--primary-color);
-}
+} */
 
 /* Responsive Design */
 @media (max-width: 768px) {

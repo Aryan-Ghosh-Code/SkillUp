@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaQuoteLeft  } from 'react-icons/fa';
-import { Link,  animateScroll as scroll, scroller} from 'react-scroll';
+import { Link,  animateScroll as scroller} from 'react-scroll';
 import './LandingPage.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -52,14 +52,14 @@ const LandingPage = () => {
         // Scroll to the "How SkillUp Works" section
         scroller.scrollTo('Features', {
             smooth: 'true',
-            duration: 500,
+            duration: 5,
         });
     };
 
     const testimonials = [
         {
             name: "Arjun Kumar",
-            role: "Data Enthusiast, Certified Data analyst",
+            role: "Certified Data analyst",
             quote: "SkillSwap helped me learn programming while teaching design to a developer. It's an incredible platform!",
             image: "/api/placeholder/80/80"
         },
@@ -99,13 +99,13 @@ const LandingPage = () => {
                             onClick={() => navigate('/register')}
                             className="pulse-hover"
                         >
-                            Get Started
+                            Get Started🚀
                         </button>
                         <button 
                             className="secondary pulse-hover" 
                             onClick={handleLearnMoreClick}
                         >
-                            Learn More
+                            Learn Moreℹ️
                         </button>
                     </div>
                 </div>
