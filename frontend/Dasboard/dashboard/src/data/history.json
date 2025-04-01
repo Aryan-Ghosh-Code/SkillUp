@@ -1,0 +1,37 @@
+[
+    {
+      "role": "Software Engineer",
+      "organisation": "Google",
+      "imageSrc": "google",
+      "startDate": "Jan 2020",
+      "endDate": "Dec 2023",
+      "experiences": [
+        "Developed scalable web applications",
+        "Optimized backend performance",
+        "Led a team of 5 engineers"
+      ]
+    },
+    {
+      "role": "Frontend Developer",
+      "organisation": "Microsoft",
+      "imageSrc": "microsoft",
+      "startDate": "Feb 2018",
+      "endDate": "Dec 2019",
+      "experiences": [
+        "Built UI components for enterprise apps",
+        "Implemented responsive design principles"
+      ]
+    },
+    {
+      "role": "Intern",
+      "organisation": "Netflix",
+      "imageSrc": "netflix",
+      "startDate": "Jun 2017",
+      "endDate": "Aug 2017",
+      "experiences": [
+       "Worked on component library",
+      "Helped create UI components"
+      ]
+    }
+  ]
+  
