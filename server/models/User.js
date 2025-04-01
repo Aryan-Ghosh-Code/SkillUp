@@ -49,6 +49,7 @@ const userSchema = new mongoose.Schema({
   image: { type: String },
   coursesViewed: { type: [String] },
   coursesOffered: { type: [String] },
+  sessionsOffered: { type: [mongoose.Schema.Types.ObjectId], ref: 'SkillSwapSession', default: [] },
 });
 
 userSchema.pre('save', async function (next) {
