@@ -1,0 +1,305 @@
+/* Global Styles */
+:root {
+  --primary-color: #000103;
+  --secondary-color: #2045db;
+  --background-dark: #1a1c28;
+  --text-light: #f8f9fa;
+  --text-muted: #9bb9fc;
+}
+
+.landing-container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #000000, #313d80);
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Header Styles */
+.main-header {
+  /*background-color: #f0ecec;*/
+  
+  padding: 20px 0;
+  box-shadow: 0 1px 3px rgba(199, 164, 164, 0.05);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(10px); 
+   -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.skill-header-content {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.main-navigation {
+  font-weight: 700;
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-light);
+}
+
+
+/* Hero Section */
+.skill-hero-section {
+  width: 100%;
+  margin: 0;
+  padding: 64px 32px;
+  box-sizing: border-box;
+  padding-top: 100px; /* To offset fixed navbar height */
+}
+
+.skill-hero-content {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .skill-hero-content {
+      flex-direction: row;
+  }
+}
+
+.skill-hero-text-container {
+  width: 50%;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .hero-text-container {
+      width: 50%;
+  }
+}
+
+.skill-hero-text-container h1
+{
+  font-size: 60px;
+  color: var(--text-light);
+}
+
+.skill-hero-heading {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-light);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.skill-hero-subheading {
+  margin-top: 24px;
+  font-size: 30px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.skill-hero-buttons button {
+  width: 200px;
+  height: 45px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 50px;
+  margin-bottom: 18px;
+  margin-right: 40px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(109, 139, 255, 0.3);
+  letter-spacing: 0.5px;
+  }
+  
+  .skill-hero-buttons button:hover {
+  /* background: linear-gradient(to right, #4263eb, #5c7cfa); */
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(109, 139, 255, 0.4);
+  }
+  
+  .skill-hero-buttons button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(6, 125, 236, 0.3);
+  }
+
+  .greeting-image {
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .greeting-image img {
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .greeting-image:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(32, 69, 219, 0.7);
+  }
+
+  .MentorCourses
+  {
+    margin-top: 24px;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .join-now-buttons button
+  {
+    width: 200px;
+  height: 45px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-right: 40px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(109, 139, 255, 0.3);
+  letter-spacing: 0.5px;
+  }
+
+  .join-now-buttons button:hover {
+    /* background: linear-gradient(to right, #4263eb, #5c7cfa); */
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(109, 139, 255, 0.4);
+    }
+    
+    .join-now-buttons button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(109, 139, 255, 0.3);
+    }
+
+.faq-section h2 {
+  font-size: 30px;
+  color: var(--text-light);
+  /* text-align: center; */
+}
+
+/* Container for FAQ and Contact Us sections */
+.skill-hero-section {
+  position: relative;
+}
+
+/* FAQ and Contact Us sections side by side */
+.faq-section, .contactus-section {
+  position: relative;
+  width: 48%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 1%;
+  background-color: rgba(26, 28, 40, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: var(--text-light);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  /* cursor: pointer; */
+}
+
+.faq-section:hover, .contactus-section:hover {
+  box-shadow: 0 8px 20px rgba(32, 69, 219, 0.7);
+  transform: translateY(-5px);
+}
+
+/* Headings for both sections */
+.faq-section h2, .contactus-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Items inside Contact Us section */
+.contactus-item {
+  margin-bottom: 15px;
+}
+
+.contactus-item h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.contactus-item p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Items inside FAQ section */
+.faq-item {
+  margin-bottom: 15px;
+}
+
+.faq-item h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .faq-section, .contactus-section {
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+  }
+}

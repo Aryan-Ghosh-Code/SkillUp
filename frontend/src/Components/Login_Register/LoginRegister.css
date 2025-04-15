@@ -21,8 +21,13 @@ width: 380px;
 padding: 30px;
 background: rgba(27, 30, 44, 0.85);
 border-radius: 12px;
-backdrop-filter: blur(30px);
+/* backdrop-filter: blur(30px); */
 box-sizing: border-box;
+margin: 0 auto;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
 
 .hidden {

@@ -8,6 +8,9 @@ import ForgotPassword from './Components/Login_Register/ForgotPassword';
 import Register from './Components/Login_Register/Register'; 
 import MentorSkillSwap  from './Components/Mentor/MentorSkillSwap';
 import Options from './Components/Mentor/Options';
+import MentoredCourses from './Components/SkillSwapper/MentoredCourses';
+import SwapSkillsLandingPage from './Components/SkillSwapper/SwapSkillsLandingPage';
+
 
 function App() {
   return (
@@ -19,6 +22,8 @@ function App() {
         <Route path = '/forgot-password' element = {<ForgotPassword/>  } />
         <Route path = '/mentor-skill-swap' element = {<MentorSkillSwap/> } /> 
         <Route path = '/options' element = {<Options/> } />
+        <Route path = '/skillSwap' element = {<SwapSkillsLandingPage/>  } />
+        <Route path = '/mentored-courses' element = {<MentoredCourses/>} />
       </Routes>
 
   </div>

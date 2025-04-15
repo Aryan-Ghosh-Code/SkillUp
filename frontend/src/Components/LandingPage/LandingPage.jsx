@@ -25,17 +25,17 @@ const LandingPage = () => {
 
             if (featuresRef.current) {
                 const scrolled = window.pageYOffset;
-                featuresRef.current.style.transform = `translateY(${scrolled * 0.4}px)`; // Faster for features
+                featuresRef.current.style.transform = `translateY(${scrolled * 0.3}px)`; // Faster for features
             }
 
             if (howItWorksRef.current) {
                 const scrolled = window.pageYOffset;
-                howItWorksRef.current.style.transform = `translateY(${scrolled * 0.5}px)`; // Medium speed for how it works
+                howItWorksRef.current.style.transform = `translateY(${scrolled * 0.3}px)`; // Medium speed for how it works
             }
 
             if (testimonialsRef.current) {
                 const scrolled = window.pageYOffset;
-                testimonialsRef.current.style.transform = `translateY(${scrolled * 0.6}px)`; // Fastest for testimonials
+                testimonialsRef.current.style.transform = `translateY(${scrolled * 0.3}px)`; // Fastest for testimonials
             }
         };
 
