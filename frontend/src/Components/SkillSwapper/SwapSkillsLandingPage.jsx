@@ -5,7 +5,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import './SwapSkillsLandingPage.css';
 import logoImage from '../Assets/logo_skillup.png';
-import greetingImage from '../Assets/avatar1.png';
+
 
 const SwapSkillsLandingPage = () => {
   const [userName] = useState('User01');
@@ -103,7 +103,7 @@ const SwapSkillsLandingPage = () => {
             </div>
           </div>
           <div className="greeting-image">
-            <img src={greetingImage} alt="Welcome" />
+            <img src="/avatar1.png" alt="Welcome" />
           </div>
         </div>
         <div className='MentorCourses'>
