@@ -6,9 +6,9 @@
 }
 body {
   font-family: "Poppins", sans-serif;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   min-height: 100vh;
   background: linear-gradient(135deg, #000000, #313d80);;
   /* background: url(./Components/Assets/bg.jpg); */

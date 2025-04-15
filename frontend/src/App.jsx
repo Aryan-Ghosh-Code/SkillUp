@@ -6,7 +6,8 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import ForgotPassword from './Components/Login_Register/ForgotPassword'; 
 
 import Register from './Components/Login_Register/Register'; 
-
+import MentorSkillSwap  from './Components/Mentor/MentorSkillSwap';
+import Options from './Components/Mentor/Options';
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
       <Routes>
       <Route path = '/' element = {<LandingPage/>  } />
         <Route path = '/login' element = {<Login/>  } />
-
         <Route path = '/register' element = {<Register/>  } />
         <Route path = '/forgot-password' element = {<ForgotPassword/>  } />
+        <Route path = '/mentor-skill-swap' element = {<MentorSkillSwap/> } /> 
+        <Route path = '/options' element = {<Options/> } />
       </Routes>
 
   </div>
