@@ -39,18 +39,18 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  role: { type: String, enum: ['learner', 'mentor'], required: true },
-  freeCredits: { type: Number, default: 0 },
-  age: { type: Number },
-  qualification: { type: String },
-  requirements: { type: String },
-  about: { type: String },
-  skills: { type: [String] },
-  image: { type: String },
-  coursesViewed: { type: [String] },
-  coursesOffered: { type: [String] },
-  sessionsOffered: { type: [mongoose.Schema.Types.ObjectId], ref: 'SkillSwapSession', default: [] },
-});
+  role: { type: String, enum: ['SkillSwapper', 'Mentor'], default: 'Skill Swapper' },
+  profile: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Profile',
+    required: true
+  },
+  credit: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Credit',
+    required: true
+  }
+}, { timestamps: true });
 
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
@@ -63,5 +63,4 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);

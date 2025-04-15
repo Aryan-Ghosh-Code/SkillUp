@@ -1,83 +1,92 @@
+// controllers/courseController.js
 const Course = require('../models/Course');
+const Profile = require('../models/Profile');
 const User = require('../models/User');
 
-const createCourse = async (req, res, next) => {
+/**
+ * @desc   Create a new course (Mentor uploads course)
+ * @route  POST /api/courses/create
+ * @access Private (Mentors only)
+ */
+exports.createCourse = async (req, res) => {
   try {
-    if (req.user.role !== 'mentor') {
-      res.status(401);
-      throw new Error('Not authorized as mentor');
-    }
-    const { title, description, price, videos } = req.body;
-    // videos is expected to be an array of objects { title, videoUrl, duration, description }
-    const course = await Course.create({
+    const { title, description, price, category, videoUrl } = req.body;
+    const userId = req.user.id;
+
+    // Create a new course document with the provided fields
+    const course = new Course({
       title,
       description,
       price,
-      mentor: req.user._id,
-      videos
+      category,
+      videoUrl,
+      mentor: userId
     });
-    res.status(201).json(course);
+
+    // Save the course to the database
+    await course.save();
+
+    const profile = await Profile.findOne({ userId });
+    profile.offeredCourses.push(course._id);
+    profile.save();
+
+    res.status(201).json({ msg: 'Course created successfully', course });
   } catch (error) {
-    next(error);
+    console.error('Course Creation Error:', error);
+    res.status(500).json({ msg: 'Server Error: Unable to create course' });
   }
 };
 
-const getCourses = async (req, res, next) => {
+/**
+ * @desc   Purchase a course (via Stripe payment success callback)
+ * @route  POST /api/courses/purchase/:courseId
+ * @access Private (SkillSwappers)
+ */
+exports.purchaseCourse = async (req, res) => {
   try {
-    const courses = await Course.find({}).populate('mentor', 'name email');
-    res.json(courses);
-  } catch (error) {
-    next(error);
-  }
-};
+    const userId = req.user.id;
+    const courseId = req.params.courseId;
 
-const enrollCourse = async (req, res, next) => {
-  try {
-    const { courseId } = req.body;
-    // Simulate payment success and enroll the user in the course.
-    const user = await User.findById(req.user._id);
-    if (!user) {
-      res.status(404);
-      throw new Error("User not found");
-    }
-    // If not already enrolled, add the course to user's enrolledCourses
-    if (!user.enrolledCourses.includes(courseId)) {
-      user.enrolledCourses.push(courseId);
-      await user.save();
-    }
-    // Update course enrollments
-    const course = await Course.findById(courseId);
-    if (course) {
-      course.enrollments += 1;
-      await course.save();
-      res.status(200).json({ message: "Enrollment successful" });
-    } else {
-      res.status(404);
-      throw new Error("Course not found");
-    }
-  } catch (error) {
-    next(error);
-  }
-};
-
-const getCourseVideos = async (req, res, next) => {
-  try {
-    const courseId = req.params.id;
-    const user = await User.findById(req.user._id);
-    // Check if the user is enrolled in this course
-    if (!user.enrolledCourses.includes(courseId)) {
-      res.status(403);
-      throw new Error("You are not enrolled in this course");
-    }
+    // In a real-world scenario you would create a Stripe Checkout session here
+    // After successful payment, you would update the course and user records accordingly.
+    // For demonstration purposes, assume payment succeeded:
     const course = await Course.findById(courseId);
     if (!course) {
-      res.status(404);
-      throw new Error("Course not found");
+      return res.status(400).json({ msg: 'Course not found' });
     }
-    res.status(200).json({ videos: course.videos });
+
+    if (course.mentor.equals(userId)) {
+      return res.status(400).json({ msg: 'You cannot enroll in your own Course' });
+    }
+
+    // Add the user to the list of enrolled users in the course document
+    course.enrolledUsers.push(userId);
+
+    // Update the user's profile with the purchased course
+    const profile = await Profile.findOne({ userId });
+    profile.purchasedCourses.push(course._id);
+
+    await Promise.all([course.save(), profile.save()]);
+
+    res.status(200).json({ msg: 'Course purchased successfully', course });
   } catch (error) {
-    next(error);
+    console.error('Course Purchase Error:', error);
+    res.status(500).json({ msg: 'Server Error: Unable to purchase course' });
   }
 };
 
-module.exports = { createCourse, getCourses, enrollCourse, getCourseVideos };
+/**
+ * @desc   Get all available courses
+ * @route  GET /api/courses
+ * @access Public
+ */
+exports.getAllCourses = async (req, res) => {
+  try {
+    // Find all courses and populate the "mentor" field to show mentor names
+    const courses = await Course.find().populate('mentor', 'name');
+    res.status(200).json(courses);
+  } catch (error) {
+    console.error('Get Courses Error:', error);
+    res.status(500).json({ msg: 'Server Error: Unable to fetch courses' });
+  }
+};

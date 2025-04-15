@@ -1,13 +1,13 @@
 // routes/paymentRoutes.js
 const express = require('express');
 const router = express.Router();
-const { createPaymentIntent, confirmEnrollment } = require('../controllers/paymentController');
+const { createCheckoutSession, handleStripeWebhook } = require('../controllers/paymentController');
 const { protect } = require('../middlewares/authMiddleware');
 
-// Route to create payment intent
-router.post('/create', protect, createPaymentIntent);
+// Create checkout session (SkillSwappers purchasing courses)
+router.post('/create-checkout-session', protect, createCheckoutSession);
 
-// Route to confirm enrollment after successful payment
-router.post('/confirm', protect, confirmEnrollment);
+// Stripe webhook endpoint (public route)
+router.post('/webhook', express.raw({ type: 'application/json' }), handleStripeWebhook);
 
 module.exports = router;

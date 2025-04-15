@@ -1,60 +1,79 @@
 // controllers/paymentController.js
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const Stripe = require('stripe');
 const Course = require('../models/Course');
-const User = require('../models/User');
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY || 'your_stripe_secret_key');
 
-const createPaymentIntent = async (req, res, next) => {
+/**
+ * @desc   Create a Stripe Checkout session for course purchase
+ * @route  POST /api/payments/create-checkout-session
+ * @access Private
+ *
+ * This endpoint is called from the frontend when a user decides to purchase a course.
+ * It creates a Stripe Checkout session with the course details.
+ */
+exports.createCheckoutSession = async (req, res) => {
   try {
     const { courseId } = req.body;
-
-    // Fetch the course to get its price
     const course = await Course.findById(courseId);
-    if (!course) {
-      res.status(404);
-      throw new Error('Course not found');
-    }
 
-    // Create a PaymentIntent with the course price (assuming price is in INR)
-    // Note: Stripe expects amounts in the smallest currency unit (e.g., paise for INR).
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(course.price * 100), // converting rupees to paise
-      currency: 'inr',
-      // Optionally include metadata for later reference:
-      metadata: { courseId: course._id.toString(), mentorId: course.mentor.toString() }
+    // Create a Stripe checkout session using the course details
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [{
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: `Course Purchased: ${course.title}`,
+            description: `Course Id: ${courseId} | Mentor: ${course.mentor} | Category: ${course.category}`
+          },
+          unit_amount: course.price,
+        },
+        quantity: 1,
+      }],
+      mode: 'payment',
+      // success_url will have the session ID and courseId to allow the frontend to update records after payment
+      success_url: `${process.env.CLIENT_URL}/payment-success?session_id={CHECKOUT_SESSION_ID}&courseId=${courseId}`,
+      // URL where the user will be redirected if they cancel the payment
+      cancel_url: `${process.env.CLIENT_URL}/payment-cancel`,
     });
 
-    res.status(200).json({ clientSecret: paymentIntent.client_secret });
+    res.status(200).json({
+      sessionId: session.id,
+      url: session.url
+    });
   } catch (error) {
-    next(error);
+    console.error('Stripe Session Creation Error:', error);
+    res.status(500).json({ msg: 'Server Error: Unable to create Stripe session' });
   }
 };
 
-const confirmEnrollment = async (req, res, next) => {
-    try {
-      const { courseId } = req.body;
-      const user = await User.findById(req.user._id);
-      if (!user) {
-        res.status(404);
-        throw new Error("User not found");
-      }
-      // Add courseId if not already enrolled
-      if (!user.enrolledCourses.includes(courseId)) {
-        user.enrolledCourses.push(courseId);
-        await user.save();
-      }
-      // Update course enrollments count
-      const course = await Course.findById(courseId);
-      if (course) {
-        course.enrollments += 1;
-        await course.save();
-        res.status(200).json({ message: "Enrollment successful" });
-      } else {
-        res.status(404);
-        throw new Error("Course not found");
-      }
-    } catch (error) {
-      next(error);
-    }
-  };
+/**
+ * @desc   Webhook endpoint for Stripe events
+ * @route  POST /api/payments/webhook
+ * @access Public (Stripe will call this endpoint)
+ *
+ * This endpoint listens for events from Stripe. When a payment is successful,
+ * you can use this endpoint to trigger order fulfillment such as updating user/course records.
+ */
+exports.handleStripeWebhook = (req, res) => {
+  // In a production scenario, verify the event by checking the Stripe signature header and using your raw request body
+  let event;
+  try {
+    // The raw body of the request and Stripe signature header are used for verifying the event.
+    event = req.body;
+  } catch (err) {
+    console.error('Webhook Error:', err);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
 
-module.exports = { createPaymentIntent, confirmEnrollment };
+  // Example: Handle the checkout session completed event
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object;
+    // You could run business logic here such as calling your purchaseCourse controller function,
+    // updating your database to mark the course as purchased, or sending a confirmation email.
+    console.log(`Payment succeeded for session: ${session.id}`);
+  }
+
+  // Respond to acknowledge receipt of the event
+  res.json({ received: true });
+};
