@@ -20,22 +20,22 @@ const LandingPage = () => {
         const handleParallax = () => {
             if (heroRef.current) {
                 const scrolled = window.pageYOffset;
-                heroRef.current.style.transform = `translateY(${scrolled * 0.5}px)`;
+                heroRef.current.style.transform = `translateY(${scrolled * 0.3}px)`; // Slower for hero
             }
 
             if (featuresRef.current) {
                 const scrolled = window.pageYOffset;
-                featuresRef.current.style.transform = `translateY(${scrolled * 0.3}px)`;
+                featuresRef.current.style.transform = `translateY(${scrolled * 0.4}px)`; // Faster for features
             }
 
             if (howItWorksRef.current) {
                 const scrolled = window.pageYOffset;
-                howItWorksRef.current.style.transform = `translateY(${scrolled * 0.2}px)`;
+                howItWorksRef.current.style.transform = `translateY(${scrolled * 0.5}px)`; // Medium speed for how it works
             }
 
             if (testimonialsRef.current) {
                 const scrolled = window.pageYOffset;
-                testimonialsRef.current.style.transform = `translateY(${scrolled * 0.1}px)`;
+                testimonialsRef.current.style.transform = `translateY(${scrolled * 0.6}px)`; // Fastest for testimonials
             }
         };
 
@@ -87,7 +87,6 @@ const LandingPage = () => {
         <div className="landing-page">
             {/* Hero Section */}
             <section 
-                
                 ref={heroRef}
                 className="hero-section animate__animated animate__fadeIn" 
             >
@@ -105,7 +104,7 @@ const LandingPage = () => {
                             className="secondary pulse-hover" 
                             onClick={handleLearnMoreClick}
                         >
-                            Learn Moreℹ️
+                            Learn More ℹ️
                         </button>
                     </div>
                 </div>
@@ -119,28 +118,28 @@ const LandingPage = () => {
             >
                 <h2>Why SkillUp?</h2>
                 <div className="features-grid">
-                    {[
+                    {[ 
                         {
                             title: 'Personalized Learning Paths',
                             description: 'Tailored learning paths based on your goals and interests, providing adaptive suggestions for continuous growth.',
                             icon: '📚'
-                            },
-                            {
+                        },
+                        {
                             title: 'Verified Mentors and Learners',
                             description: 'Connect with verified mentors and experienced professionals to ensure authentic and meaningful skill exchanges.',
                             icon: '✅'
-                            },
-                            {
+                        },
+                        {
                             title: 'Flexible Scheduling',
                             description: 'Schedule learning and mentoring sessions at your convenience.',
                             icon: '📅'
-                            },
-                            {
+                        },
+                        {
                             title: 'Skill Endorsements and Badges',
                             description: 'Earn endorsements from mentors to build credibility and display achievement badges on your profile.',
                             icon: '🏅'
-                            },
-                            {
+                        },
+                        {
                             title: 'Community and Networking',
                             description: 'Join vibrant learning communities, participate in discussions, and attend virtual meetups to collaborate on projects.',
                             icon: '🌐'
@@ -166,7 +165,7 @@ const LandingPage = () => {
             >
                 <h2>How SkillUp Works?</h2>
                 <div className="steps-container">
-                    {[
+                    {[ 
                         { number: "1", title: "Create Profile📋", description: "Set up your profile and showcase your skills." },
                         { number: "2", title: "Find Match🔍", description: "Browse and connect with skill exchange partners." },
                         { number: "3", title: "Learn & Grow🎓", description: "Exchange knowledge through structured sessions." },
@@ -211,7 +210,7 @@ const LandingPage = () => {
                     ))}
                 </div>
             </section>
-    </div>
+        </div>
     );
 };
 
