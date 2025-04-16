@@ -4,10 +4,11 @@ import { FaLock } from "react-icons/fa";
 import './LoginRegister.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { IoMdArrowDropdown } from "react-icons/io";
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const navigate = useNavigate();
     const API_URL=import.meta.env.VITE_API_URL;
@@ -15,14 +16,16 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
 
-        const loginData = { email, password };
+        const loginData = { email, password, role };
 
         if (rememberMe) {
             localStorage.setItem('email', email);
             localStorage.setItem('password', password);
+            localStorage.setItem('role', role);
         } else {
             localStorage.removeItem('email');
             localStorage.removeItem('password');
+            localStorage.removeItem('role');
         }
 
         axios.post(`${API_URL}/api/auth/login`, loginData)
@@ -60,6 +63,18 @@ const Login = () => {
                     />
                     <MdEmail className='icon' />
                 </div>
+                <div className="input-box">
+            <select
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            required
+            >
+            <option value="" disabled>Select Role</option>
+            <option value="Skill Swapper">Skill Swapper</option>
+            <option value="Mentor">Mentor</option>
+            </select>
+            <IoMdArrowDropdown className='icon' />
+        </div>
                 <div className="input-box">
                     <input
                         type="password"

@@ -1,0 +1,129 @@
+:root {
+  --primary-color: #000103;
+  --secondary-color: #2045db;
+  --background-dark: #1a1c28;
+  --text-light: #f8f9fa;
+  --text-muted: #9bb9fc;
+}
+
+.create-swap-container {
+  width: 500px;
+  padding: 30px;
+  background: rgba(27, 30, 44, 0.85);
+  border-radius: 12px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.create-swap-container:hover {
+  background: rgba(27, 30, 44, 0.85);
+  box-shadow: 0 8px 20px rgba(122, 146, 243, 0.5);
+  transform: translate(-50%, -50%) scale(1.03);
+}
+
+.create-swap-form h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 20px;
+}
+
+.input-box input,
+.input-box select {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(103, 128, 255, 0.15);
+  border-radius: 12px;
+  font-size: 15px;
+  color: #f8f9fa;
+  padding: 0 42px 0 18px;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+.input-box input:focus,
+.input-box select:focus {
+  border-color: #6d8bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(109, 139, 255, 0.2);
+}
+
+.input-box input::placeholder {
+  color: #a0a5b1;
+}
+
+.input-box select {
+  padding: 10px 18px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.input-box select option {
+  background-color: #2a2d3e;
+  color: #f8f9fa;
+  padding: 10px;
+}
+
+.create-swap-form input[type="text"],
+.create-swap-form input[type="number"],
+.create-swap-form input[type="file"] {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(103, 128, 255, 0.15);
+  border-radius: 12px;
+  font-size: 15px;
+  color: #f8f9fa;
+  padding: 0 42px 0 18px;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+.create-swap-form input[type="text"]:focus,
+.create-swap-form input[type="number"]:focus,
+.create-swap-form input[type="file"]:focus,
+.create-swap-form select:focus {
+  border-color: #6d8bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(109, 139, 255, 0.2);
+}
+
+.create-swap-form input[type="text"],
+.create-swap-form input[type="number"],
+.create-swap-form input[type="file"] select {
+  padding: 10px 18px;
+  appearance: none;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9bb9fc;
+  font-size: 20px;
+}
+
+.create-swap-form input[type="file"] {
+  text-align: center; 
+  padding: 10px 8px;
+}
+
+.file-upload-text {
+  color: #a0a5b1;
+  padding-left: 2px;
+}

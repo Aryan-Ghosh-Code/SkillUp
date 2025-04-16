@@ -25,8 +25,7 @@ const SwapSkillsLandingPage = () => {
   }, []);
 
   const handleCreateSwap = () => {
-    alert('Create A Swap button clicked!');
-    // Future: navigate or open modal for creating a swap
+    navigate('/create-swap');
   };
 
   const handleJoinSwap = () => {
@@ -109,7 +108,7 @@ const SwapSkillsLandingPage = () => {
         <div className='MentorCourses'>
           <br /> <br /> <br />
           Stay Ahead of the queue? <br />
-          Join exclusive batches featuring top industry expterts!! 
+          Join exclusive batches featuring top industry experts!! 
           <div className="join-now-buttons">
               <button className="join-now-button" onClick={handleJoinNow}>Join Now!!</button>
             </div>
@@ -152,7 +151,7 @@ const SwapSkillsLandingPage = () => {
           <div className="contactus-item">
             <h3>Follow Us</h3>
             <p>Stay connected on social media: 
-            LinkedIn: <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin style={{ color: 'white' }} /></a> Instagram: <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram style={{ color: 'white' }} /></a> Twitter: <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter style={{ color: 'white' }} /></a></p>
+            LinkedIn <a href="https:www.linkedin.com/in/aryan-ghosh-83a26631b" target="_blank" rel="noopener noreferrer"><FaLinkedin style={{ color: 'white' }} /></a> Instagram <a href="https://www.instagram.com/aryanghosh_4960?igsh=YzNzajZsY255anBo" target="_blank" rel="noopener noreferrer"><FaInstagram style={{ color: 'white' }} /></a> Twitter <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter style={{ color: 'white' }} /></a></p>
           </div>
         </section>
       </main>

@@ -87,7 +87,7 @@
 .course-card {
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 4px var(--text-muted);
+  
   background-color: var(--text-light);
   transition: transform 0.3s ease;
   height: 450px;
@@ -96,6 +96,7 @@
 }
 
 .course-card:hover {
+  box-shadow: 0 8px 8px rgba(174, 152, 253, 0.4);
   transform: translateY(-5px);
 }
 
