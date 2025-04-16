@@ -49,7 +49,7 @@ const CreateSwap = () => {
             <span className="logo-text">SkillUp</span>
           </div>
           <nav className="main-navigation">
-            <a href="#" className="nav-link" onClick={() => navigate('/mentor-skill-swap')}>Return to Home</a>
+            <a href="#" className="nav-link" onClick={() => navigate('/skillSwap')}>Return to Home</a>
           </nav>
         </div>
       </header>
