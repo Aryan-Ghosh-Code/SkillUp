@@ -115,7 +115,7 @@ const MentoredCourses = () => {
         <div className="card-content">
           <h3 className="card-title">{title}</h3>
           <p className="card-description">{description}</p>
-          <p className="card-price">Price: ${price}</p>
+          <p className="card-price">Price: ₹{price}</p>
           <p className="card-mentor">Mentor: {mentorName}</p>
           <p className="card-category">Category: {category}</p>
           <p className="card-rating">Average Rating: {averageRating}</p>
