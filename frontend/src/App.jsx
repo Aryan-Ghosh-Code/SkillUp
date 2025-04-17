@@ -4,13 +4,13 @@ import Login from './Components/Login_Register/Login';
 import LandingPage from './Components/LandingPage/LandingPage'; 
 
 import ForgotPassword from './Components/Login_Register/ForgotPassword'; 
-
 import Register from './Components/Login_Register/Register'; 
 import MentorSkillSwap  from './Components/Mentor/MentorSkillSwap';
 import MentoredCourses from './Components/SkillSwapper/MentoredCourses';
 import SwapSkillsLandingPage from './Components/SkillSwapper/SwapSkillsLandingPage';
 import CreateCourse from './Components/Mentor/createCourse';
 import CreateSwap from './Components/SkillSwapper/createSwap';
+import JoinSwap from './Components/SkillSwapper/joinSwap';
 
 function App() {
   return (
@@ -25,8 +25,8 @@ function App() {
         <Route path = '/mentored-courses' element = {<MentoredCourses/>} />
         <Route path = '/create-courses' element = {<CreateCourse/>} />
         <Route path = '/create-swap' element = {<CreateSwap/>} />
+        <Route path = '/join-swap' element = {<JoinSwap/>} />
       </Routes>
-
   </div>
   );
 }

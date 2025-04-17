@@ -29,8 +29,7 @@ const SwapSkillsLandingPage = () => {
   };
 
   const handleJoinSwap = () => {
-    alert('Join A Swap button clicked!');
-    // Future: navigate or open modal for joining a swap
+    navigate('/join-swap');
   };
 
   const handleJoinNow = () => {

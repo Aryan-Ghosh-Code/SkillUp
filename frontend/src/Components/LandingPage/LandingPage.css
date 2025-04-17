@@ -129,6 +129,8 @@
 
 .feature-card:hover {
   transform: translateY(-15px);
+  background: rgba(27, 30, 44, 0.85);
+box-shadow: 0 8px 20px rgba(122, 146, 243, 0.5);
 }
 
 .feature-icon {
@@ -170,6 +172,8 @@
 
 .step:hover {
   transform: translateY(-15px);
+  background: rgba(27, 30, 44, 0.85);
+box-shadow: 0 8px 20px rgba(122, 146, 243, 0.5);
 }
 
 /* Testimonials Section */
@@ -190,6 +194,8 @@
 .testimonial-card:hover
 {
   transform: translateY(-15px);
+  background: rgba(27, 30, 44, 0.85);
+  box-shadow: 0 8px 20px rgba(122, 146, 243, 0.5);
 }
 
 .quote-icon {
