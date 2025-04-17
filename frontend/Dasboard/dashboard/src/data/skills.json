@@ -1,9 +1,0 @@
-[
-    { "title": "CSS", "imageSrc": "css" },
-    { "title": "Figma", "imageSrc": "figma" },
-    { "title": "GraphQL", "imageSrc": "graphql" },
-    { "title": "HTML", "imageSrc": "html" },
-    { "title": "MongoDB", "imageSrc": "mongodb" },
-    { "title": "Node.js", "imageSrc": "node" }
-  ]
-  
