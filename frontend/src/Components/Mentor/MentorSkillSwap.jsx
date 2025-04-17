@@ -29,6 +29,10 @@ const SwapSkillsLandingPage = () => {
     // Future: navigate or open modal for creating a swap
   };
 
+  const myProfile = () => {
+    navigate('/mentor-profile');
+  };
+
   const scrollToFAQ = (e) => {
     e.preventDefault();
     if (faqRef.current) {
@@ -62,7 +66,7 @@ const SwapSkillsLandingPage = () => {
           <nav className="main-navigation">
             <a href="#" className="nav-link">Home</a>
             <a href="#" className="nav-link">My Courses</a>
-            <a href="#" className="nav-link">My Profile</a>
+            <a href="#" className="nav-link" onClick={myProfile}>My Profile</a>
             <a href="#" className="nav-link" onClick={scrollToContactUs}>ContactUs</a>
             <a href="#" className="nav-link" onClick={scrollToFAQ}>FAQ</a>
           </nav>
