@@ -2,51 +2,34 @@ import React, { useState } from 'react';
 import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
 import './LoginRegister.css';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { IoMdArrowDropdown } from "react-icons/io";
+import useLogin from '../../hooks/useLogin';
+
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [role, setRole] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const navigate = useNavigate();
-    const API_URL=import.meta.env.VITE_API_URL;
+    const { loading, login } = useLogin();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
-        const loginData = { email, password, role };
+        const loginData = { email, password };
 
         if (rememberMe) {
             localStorage.setItem('email', email);
             localStorage.setItem('password', password);
-            localStorage.setItem('role', role);
         } else {
             localStorage.removeItem('email');
             localStorage.removeItem('password');
-            localStorage.removeItem('role');
         }
 
-        axios.post(`${API_URL}/api/auth/login`, loginData)
-            .then((response) => {
-                if (response.status === 200) {
-                    alert('Login successful!');
-                    console.log(response.body);
-                } else {
-                    alert('Invalid credentials. Please try again.');
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('Error during login. Please try again.');
-            });
+        await login(loginData);
     };
 
     const handleForgotPassword = () => {
-
         navigate('/forgot-password');
-
     };
 
     return (
@@ -63,18 +46,7 @@ const Login = () => {
                     />
                     <MdEmail className='icon' />
                 </div>
-                <div className="input-box">
-            <select
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            required
-            >
-            <option value="" disabled>Select Role</option>
-            <option value="Skill Swapper">Skill Swapper</option>
-            <option value="Mentor">Mentor</option>
-            </select>
-            <IoMdArrowDropdown className='icon' />
-        </div>
+
                 <div className="input-box">
                     <input
                         type="password"
@@ -101,12 +73,12 @@ const Login = () => {
                 <button type='submit'>LogIn</button>
                 <div className='Register-link'>
                     <p>
-                        Don't have an account?<a href='#' onClick={() => { navigate("/register")}}>Register</a>
+                        Don't have an account?<a href='#' onClick={() => { navigate("/register") }}>Register</a>
                     </p>
                 </div>
                 <div className='Go-Back-link'>
                     <p>
-                        Go Back?<a href='#' onClick={() => { navigate("/")}}>Home</a>
+                        Go Back?<a href='#' onClick={() => { navigate("/") }}>Home</a>
                     </p>
                 </div>
             </form>

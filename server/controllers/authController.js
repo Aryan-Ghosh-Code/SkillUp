@@ -86,7 +86,7 @@ exports.register = async (req, res) => {
     // Check if user exists
     let user = await User.findOne({ email });
     if (user) {
-      return res.status(400).json({ msg: 'User already exists' });
+      return res.status(400).json({ error: 'User already exists' });
     }
 
     // Create Profile and Credit documents for the user
@@ -120,7 +120,7 @@ exports.register = async (req, res) => {
     });
   } catch (error) {
     console.error('Register Error:', error);
-    res.status(500).json({ msg: 'Server Error: Unable to register' });
+    res.status(500).json({ error: 'Server Error: Unable to register' });
   }
 };
 
@@ -136,13 +136,13 @@ exports.login = async (req, res) => {
     // Find the user by email
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ msg: 'Invalid credentials' });
+      return res.status(400).json({ error: 'Invalid credentials' });
     }
 
     // Verify password
     const isMatch = await user.matchPassword(password);
     if (!isMatch) {
-      return res.status(400).json({ msg: 'Invalid credentials' });
+      return res.status(400).json({ error: 'Invalid credentials' });
     }
 
     const token = generateToken(user);
@@ -158,6 +158,6 @@ exports.login = async (req, res) => {
     });
   } catch (error) {
     console.error('Login Error:', error);
-    res.status(500).json({ msg: 'Server Error: Unable to login' });
+    res.status(500).json({ error: 'Server Error: Unable to login' });
   }
 };
