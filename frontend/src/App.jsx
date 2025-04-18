@@ -13,7 +13,7 @@ import CreateSwap from './Components/SkillSwapper/createSwap';
 import JoinSwap from './Components/SkillSwapper/joinSwap';
 import UserProfile from './Components/SkillSwapper/userProfile';
 import MentorProfile from './Components/Mentor/mentorProfile';
-// import ViewMySwaps from './Components/SkillSwapper/viewMySwaps';
+import ViewMySwaps from './Components/SkillSwapper/viewMySwaps';
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
         <Route path = '/join-swap' element = {<JoinSwap/>} />
         <Route path = '/user-profile' element = {<UserProfile/>} />
         <Route path = '/mentor-profile' element = {<MentorProfile/>} />
-        {/* <Route path = '/view-swap' element = {<ViewMySwaps/>} /> */}
+        <Route path = '/view-swap' element = {<ViewMySwaps/>} />
       </Routes>
   </div>
   );

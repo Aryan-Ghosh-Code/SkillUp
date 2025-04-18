@@ -73,7 +73,7 @@ const SwapSkillsLandingPage = () => {
           {/* Navigation Links */}
           <nav className="main-navigation">
             <a href="#" className="nav-link">Home</a>
-            <a href="#" className="nav-link">MySkillSwaps</a>
+            <Link to="/view-swap" className="nav-link">MySkillSwaps</Link>
             <Link to="/user-profile" className="nav-link">My Profile</Link>
             <a href="#" className="nav-link" onClick={scrollToContactUs}>ContactUs</a>
             <a href="#" className="nav-link" onClick={scrollToFAQ}>FAQ</a>
