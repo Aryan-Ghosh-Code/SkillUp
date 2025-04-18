@@ -1,40 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaTags, FaCoins, FaUser } from "react-icons/fa";
 import './viewMySwaps.css';
 import logoImage from '../Assets/logo_skillup.png';
+import useGetMySkillSwapSessions from '../../hooks/useGetMySkillSwapsSessions';
 
-// Simulated data for Skillswaps and Mentored Courses
-const swapSessions = [
-  // Sample data for Skillswap enrollments
-  {
-    id: 1,
-    title: "Learn React Hooks",
-    description: "A session to learn React hooks in depth.",
-    videoUrl: "https://example.com/video/react-hooks.mp4",
-    category: "Web Development",
-    skillTags: ["React", "JavaScript", "Hooks"],
-    offeredBy: { name: "John Doe" },
-    creditCost: 15,
-    createdAt: "2024-01-15T10:00:00Z"
-  },
-  // Add more swap sessions as needed
-];
-
-const mentoredCourses = [
-  // Sample data for mentored courses
-  {
-    id: 1,
-    title: 'Data Science With Generative AI Course',
-    description: 'Job Assistance | Ticket to career growth in Data Science',
-    price: 299,
-    mentor: 'John Doe',
-    videoUrl: 'https://example.com/video1',
-    createdAt: '2023-01-15'
-  },
-  // Add more courses as needed
-];
+// const mentoredCourses = [
+//   // Sample data for mentored courses
+//   {
+//     id: 1,
+//     title: 'Data Science With Generative AI Course',
+//     description: 'Job Assistance | Ticket to career growth in Data Science',
+//     price: 299,
+//     mentor: 'John Doe',
+//     videoUrl: 'https://example.com/video1',
+//     createdAt: '2023-01-15'
+//   },
+//   // Add more courses as needed
+// ];
 
 const ViewMySwaps = () => {
+  const { loading, getMySkillSwap } = useGetMySkillSwapSessions();
+  const [skillSwaps, setSkillSwaps] = useState([]);
+
+  const getSkillSwapSessions = async () => {
+    const data = await getMySkillSwap();
+    setSkillSwaps(data);
+  }
+
+  useEffect(() => {
+    getSkillSwapSessions();
+  }, []);
+
   return (
     <div>
       {/* Static Navbar */}
@@ -56,11 +52,11 @@ const ViewMySwaps = () => {
       <main className="view-my-swaps-container">
         <h2>Your Skillswap Enrollments</h2>
         <div className="swap-cards-container">
-          {swapSessions.map((swapSession) => (
+          {skillSwaps.map((swapSession) => (
             <div key={swapSession.id} className="swap-card">
               <h2 className="swap-title">{swapSession.title}</h2>
               <p className="swap-description">{swapSession.description}</p>
-              <video className="swap-video" controls>
+              <video className="swap-video" muted>
                 <source src={swapSession.videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
@@ -90,7 +86,7 @@ const ViewMySwaps = () => {
         </div>
 
         {/* Mentored Courses Section */}
-        <h2>Your Mentored Courses</h2>
+        {/*<h2>Your Mentored Courses</h2>
         <div className="course-cards-container">
           {mentoredCourses.map((course) => (
             <div key={course.id} className="course-card">
@@ -106,7 +102,7 @@ const ViewMySwaps = () => {
               )}
             </div>
           ))}
-        </div>
+        </div>*/}
       </main>
     </div>
   );

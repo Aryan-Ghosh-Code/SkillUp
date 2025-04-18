@@ -38,7 +38,7 @@ exports.createSkillSwapSession = async (req, res) => {
     res.status(201).json({ msg: 'SkillSwap session created', session });
   } catch (error) {
     console.error('Create Session Error:', error);
-    res.status(500).json({ msg: 'Server Error: Unable to create session' });
+    res.status(500).json({ error: 'Server Error: Unable to create session' });
   }
 };
 
@@ -56,22 +56,22 @@ exports.enrollInSession = async (req, res) => {
     const user = await User.findById(userId);
 
     if (!session) {
-      return res.status(400).json({ msg: 'Session not found' });
+      return res.status(400).json({ error: 'Session not found' });
     }
 
     // Check if already enrolled
     if (session.SkillSwapper && session.SkillSwapper.includes(userId)) {
-      return res.status(400).json({ msg: 'Already enrolled in this session' });
+      return res.status(400).json({ error: 'Already enrolled in this session' });
     }
 
     if (session.offeredBy.equals(userId)) {
-      return res.status(400).json({ msg: 'You cannot enroll in your own Skill Swap Session' });
+      return res.status(400).json({ error: 'You cannot enroll in your own Skill Swap Session' });
     }
 
     // Check if the user has enough credits
     const credit = await Credit.findById(user.credit);
     if (credit.balance < session.creditCost) {
-      return res.status(400).json({ msg: 'Not enough credits to enroll' });
+      return res.status(400).json({ error: 'Not enough credits to enroll' });
     }
 
     // Deduct credits and update transaction history
@@ -95,7 +95,7 @@ exports.enrollInSession = async (req, res) => {
     res.status(200).json({ msg: 'Enrolled in session successfully', session });
   } catch (error) {
     console.error('Enroll Session Error:', error);
-    res.status(500).json({ msg: 'Server Error: Unable to enroll in session' });
+    res.status(500).json({ error: 'Server Error: Unable to enroll in session' });
   }
 };
 
@@ -110,7 +110,7 @@ exports.getAllSessions = async (req, res) => {
     res.status(200).json(sessions.reverse());
   } catch (error) {
     console.error('Get Sessions Error:', error);
-    res.status(500).json({ msg: 'Server Error: Unable to fetch sessions' });
+    res.status(500).json({ error: 'Server Error: Unable to fetch sessions' });
   }
 };
 
@@ -132,6 +132,6 @@ exports.getMyEnrolledSessions = async (req, res) => {
     res.status(200).json(user.profile.enrolledSkills);
   } catch (error) {
     console.error('My Enrolled Sessions Error:', error);
-    res.status(500).json({ msg: 'Server Error: Unable to fetch enrolled sessions' });
+    res.status(500).json({ error: 'Server Error: Unable to fetch enrolled sessions' });
   }
 };

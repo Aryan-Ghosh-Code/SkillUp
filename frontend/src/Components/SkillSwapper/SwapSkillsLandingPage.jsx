@@ -5,13 +5,14 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import './SwapSkillsLandingPage.css';
 import logoImage from '../Assets/logo_skillup.png';
+import { useAuthContext } from "../../context/AuthContext";
 
 
 const SwapSkillsLandingPage = () => {
-  const [userName] = useState('User01');
   const [greeting, setGreeting] = useState('');
   const navigate = useNavigate();
   const faqRef = useRef(null);
+  const { authUser } = useAuthContext();
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -69,7 +70,7 @@ const SwapSkillsLandingPage = () => {
             </div>
             <span className="logo-text">SkillUp</span>
           </div>
-          
+
           {/* Navigation Links */}
           <nav className="main-navigation">
             <a href="#" className="nav-link">Home</a>
@@ -80,14 +81,14 @@ const SwapSkillsLandingPage = () => {
           </nav>
         </div>
       </header>
-      
+
       {/* Hero Section */}
       <main className="skill-hero-section">
         <div className="skill-hero-content">
           {/* Left Content */}
           <div className="skill-hero-text-container">
             <h1>
-              {greeting} {userName},
+              {greeting} {authUser.name},
             </h1>
             <h2 className="skill-hero-heading">
               <br />
@@ -95,11 +96,11 @@ const SwapSkillsLandingPage = () => {
               Skill Swapping<br />
               Platform
             </h2>
-            
+
             <h3 className="skill-hero-subheading">
               Discover a world of opportunities by swapping your skills with others
             </h3>
-            
+
             <div className="skill-hero-buttons">
               <button className="get-started-button" onClick={handleCreateSwap}>Create A Swap</button>
               <button className="explore-skills-button" onClick={handleJoinSwap}>Join A Swap</button>
@@ -112,15 +113,15 @@ const SwapSkillsLandingPage = () => {
         <div className='MentorCourses'>
           <br /> <br /> <br />
           Stay Ahead of the queue? <br />
-          Join exclusive batches featuring top industry experts!! 
+          Join exclusive batches featuring top industry experts!!
           <div className="join-now-buttons">
-              <button className="join-now-button" onClick={handleJoinNow}>Join Now!!</button>
-            </div>
+            <button className="join-now-button" onClick={handleJoinNow}>Join Now!!</button>
+          </div>
         </div>
         {/* FAQ Section */}
         <section ref={faqRef} className="faq-section">
           <h2>
-          Frequently Asked Questions
+            Frequently Asked Questions
           </h2>
           <div className="faq-item">
             <h3>What is Skill Swapping?</h3>
@@ -142,7 +143,7 @@ const SwapSkillsLandingPage = () => {
         {/* Contact Us Section */}
         <section ref={contactUsRef} className="contactus-section">
           <h2>
-          Contact Us
+            Contact Us
           </h2>
           <div className="contactus-item">
             <h3>Get in Touch</h3>
@@ -154,8 +155,8 @@ const SwapSkillsLandingPage = () => {
           </div>
           <div className="contactus-item">
             <h3>Follow Us</h3>
-            <p>Stay connected on social media: 
-            LinkedIn <a href="https:www.linkedin.com/in/aryan-ghosh-83a26631b" target="_blank" rel="noopener noreferrer"><FaLinkedin style={{ color: 'white' }} /></a> Instagram <a href="https://www.instagram.com/aryanghosh_4960?igsh=YzNzajZsY255anBo" target="_blank" rel="noopener noreferrer"><FaInstagram style={{ color: 'white' }} /></a> Twitter <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter style={{ color: 'white' }} /></a></p>
+            <p>Stay connected on social media:
+              LinkedIn <a href="https:www.linkedin.com/in/aryan-ghosh-83a26631b" target="_blank" rel="noopener noreferrer"><FaLinkedin style={{ color: 'white' }} /></a> Instagram <a href="https://www.instagram.com/aryanghosh_4960?igsh=YzNzajZsY255anBo" target="_blank" rel="noopener noreferrer"><FaInstagram style={{ color: 'white' }} /></a> Twitter <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter style={{ color: 'white' }} /></a></p>
           </div>
         </section>
       </main>
