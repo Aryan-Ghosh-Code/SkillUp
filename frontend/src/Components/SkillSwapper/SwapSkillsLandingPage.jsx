@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -36,9 +36,9 @@ const SwapSkillsLandingPage = () => {
     navigate('/mentored-courses');
   };
 
-  const myProfile = () => {
-    navigate('/user-profile');
-  };
+  // const myProfile = () => {
+  //   navigate('/user-profile');
+  // };
 
 
   const scrollToFAQ = (e) => {
@@ -74,7 +74,7 @@ const SwapSkillsLandingPage = () => {
           <nav className="main-navigation">
             <a href="#" className="nav-link">Home</a>
             <a href="#" className="nav-link">MySkillSwaps</a>
-            <a href="#" className="nav-link" onClick={myProfile}>My Profile</a>
+            <Link to="/user-profile" className="nav-link">My Profile</Link>
             <a href="#" className="nav-link" onClick={scrollToContactUs}>ContactUs</a>
             <a href="#" className="nav-link" onClick={scrollToFAQ}>FAQ</a>
           </nav>

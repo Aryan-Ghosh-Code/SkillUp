@@ -1,33 +1,92 @@
-/* ProfileCard.css */
-.profile-card {
-    max-width: 500px;
-    margin: 60px auto;
-    padding: 30px;
-    border-radius: 15px;
-    background: #ffffff;
-    border: 2px solid #ccc;
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+:root {
+    --primary-color: #000103;
+    --secondary-color: #2045db;
+    --background-dark: #1a1c28;
+    --text-light: #f8f9fa;
+    --text-muted: #9bb9fc;
+    --border-color: rgba(103, 128, 255, 0.15);
+    --hover-shadow: 0 8px 20px rgba(122, 146, 243, 0.5);
+    --focus-shadow: 0 0 0 3px rgba(109, 139, 255, 0.2);
+    --hover-scale: scale(1.02);
+    --transition-speed: 0.3s;
   }
   
-  .profile-card h2 {
+  /* Base container styles */
+  .profile-card,
+  .skill-manager-container,
+  .bio-container,
+  .user-form-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(27, 30, 44, 0.85);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Hover effects for all containers */
+  .profile-card:hover,
+  .skill-manager-container:hover,
+  .bio-container:hover,
+  .user-form-container:hover {
+    transform: var(--hover-scale);
+    box-shadow: var(--hover-shadow);
+  }
+  
+  /* Container specific styles */
+  .profile-card {
+    text-align: center;
+    margin-top: 7%;
+  }
+  
+  .skill-manager-container {
+    margin-top: 20px;
+  }
+  
+  .bio-container {
+    margin-top: 20px;
+  }
+  
+  .user-form-container {
+    margin-top: 20px;
+  }
+  
+  /* Common heading styles */
+  .profile-card h2,
+  .skill-manager-container h2,
+  .bio-container h2,
+  .user-form-container h2 {
+    text-align: center;
     margin-bottom: 25px;
     font-size: 24px;
     font-weight: 600;
-    color: #2d2d2d;
+    color: var(--text-light);
+    position: relative;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
+  /* Avatar section */
   .avatar-wrapper {
     width: 160px;
     height: 160px;
     margin: 0 auto 20px;
     border-radius: 50%;
     overflow: hidden;
-    border: 4px solid #e0e0e0;
-    background: linear-gradient(135deg, #f3f3f3, #eaeaea);
+    border: 4px solid var(--border-color);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all var(--transition-speed) ease;
+  }
+  
+  .avatar-wrapper:hover {
+    border-color: #6d8bff;
+    box-shadow: 0 0 15px rgba(109, 139, 255, 0.3);
+    transform: scale(1.05);
   }
   
   .avatar {
@@ -37,7 +96,7 @@
   }
   
   .avatar-placeholder {
-    color: #9e9e9e;
+    color: var(--text-muted);
     font-size: 14px;
   }
   
@@ -45,92 +104,63 @@
     display: none;
   }
   
-  .change-avatar-btn {
-    background-color: #3b82f6;
-    color: white;
-    padding: 10px 18px;
-    font-size: 15px;
+  /* Button styles */
+  .change-avatar-btn,
+  .input-section button,
+  .edit-btn,
+  .delete-btn,
+  .save-btn,
+  .bio-button,
+  .user-form button {
+    padding: 12px 24px;
+    font-size: 16px;
+    color: var(--text-light);
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    margin-bottom: 25px;
-    transition: background-color 0.3s ease;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
   }
   
-  .change-avatar-btn:hover {
-    background-color: #2563eb;
+  .change-avatar-btn:hover,
+  .input-section button:hover,
+  .edit-btn:hover,
+  .delete-btn:hover,
+  .save-btn:hover,
+  .bio-button:hover,
+  .user-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(32, 69, 219, 0.4);
   }
   
-  .credits-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
-  
-  .credits-section label {
+  /* Input styles */
+  .credits-input,
+  .input-section input,
+  .edit-input,
+  .bio-input,
+  .user-form input {
+    width: 100%;
+    padding: 12px;
     font-size: 16px;
-    font-weight: 500;
-    color: #444;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    transition: all var(--transition-speed);
   }
   
-  .credits-input {
-    width: 150px;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #f9f9f9;
-    color: #2c2c2c;
+  .credits-input:focus,
+  .input-section input:focus,
+  .edit-input:focus,
+  .bio-input:focus,
+  .user-form input:focus {
+    border-color: #6d8bff;
+    outline: none;
+    box-shadow: var(--focus-shadow);
   }
   
-  /* SkillManager.css */
-  .skill-manager-container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 25px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    background-color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .skill-manager-container h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .input-section {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .input-section input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #f9f9f9;
-  }
-  
-  .input-section button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .input-section button:hover {
-    background-color: #555;
-  }
-  
+  /* Skills list */
   .skills-list {
     list-style-type: none;
     padding: 0;
@@ -142,142 +172,180 @@
     justify-content: space-between;
     gap: 10px;
     padding: 12px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-light);
+    transition: all var(--transition-speed) ease;
   }
   
-  .skill-text {
-    flex: 1;
-    font-size: 16px;
+  .skill-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
   }
   
-  .edit-input {
-    flex: 1;
-    padding: 8px;
-    font-size: 15px;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-  }
-  
-  .edit-btn,
-  .delete-btn,
-  .save-btn {
-    padding: 6px 14px;
-    font-size: 14px;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .edit-btn {
-    background-color: #007bff;
-  }
-  
-  .edit-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .save-btn {
-    background-color: #28a745;
-  }
-  
-  .save-btn:hover {
-    background-color: #1e7e34;
-  }
-  
-  .delete-btn {
-    background-color: #dc3545;
-  }
-  
-  .delete-btn:hover {
-    background-color: #a71d2a;
-  }
-  
-  /* UserBio.css */
-  .bio-container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 25px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    background-color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .bio-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
+  /* Bio section */
   .bio-text {
     padding: 15px;
-    background-color: #f3f3f3;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
     min-height: 100px;
     white-space: pre-wrap;
+    color: var(--text-light);
+    transition: all var(--transition-speed) ease;
   }
   
-  .bio-input {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #bbb;
-    border-radius: 5px;
-    resize: vertical;
-    box-sizing: border-box;
-    background-color: #f9f9f9;
-    margin-bottom: 15px;
+  .bio-text:hover {
+    border-color: #6d8bff;
+    box-shadow: 0 0 15px rgba(109, 139, 255, 0.2);
   }
   
-  .bio-button {
-    display: block;
-    margin: 0 auto;
-    padding: 10px 25px;
-    font-size: 16px;
-    color: white;
-    background-color: blue;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .bio-button:hover {
-    background-color: lightseagreen;
-  }
-  
-  /* UserForm.css */
-  .user-form-container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
-  }
-  
-  .user-form-container h2 {
-    text-align: center;
-    color: #333;
-  }
-  
+  /* Form styles */
   .user-form label {
     display: block;
     margin-bottom: 15px;
     font-weight: bold;
-    color: #222;
+    color: var(--text-muted);
   }
   
   .user-form input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 5px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
     box-sizing: border-box;
-    background-color: #e9e9e9;
-    color: #333;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    transition: all var(--transition-speed);
   }
   
+  .user-form input:focus {
+    border-color: #6d8bff;
+    outline: none;
+    box-shadow: var(--focus-shadow);
+  }
+  
+  /* Button specific styles */
+  .edit-btn {
+    background: linear-gradient(to right, #007bff, #0056b3);
+  }
+  
+  .profile-card h1{
+    color: var(--text-light); 
+    font-weight: 500;
+  }
+  
+  .credits-section label{
+    color: var(--text-light); 
+    font-weight: 500;
+  }
+  
+  .save-btn {
+    background: linear-gradient(to right, #28a745, #1e7e34);
+  }
+  
+  .delete-btn {
+    background: linear-gradient(to right, #dc3545, #a71d2a);
+  }
+  
+  .change-avatar-btn,
+  .bio-button,
+  .user-form button {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  }
+  
+  .bio-button {
+    display: block;
+    margin: 10px auto 0;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: var(--text-light);
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .profile-card,
+    .skill-manager-container,
+    .bio-container,
+    .user-form-container {
+      margin: 20px;
+      padding: 20px;
+    }
+  
+    .avatar-wrapper {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .input-section {
+      flex-direction: column;
+    }
+  
+    .input-section button {
+      width: 100%;
+    }
+  
+    .skill-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .skill-item .buttons {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+  }
+  
+  .input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  
+  .input-section input {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    transition: all var(--transition-speed);
+  }
+  
+  .input-section button {
+    padding: 12px 24px;
+    font-size: 16px;
+    color: var(--text-light);
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 120px;
+    white-space: nowrap;
+  }
+  
+  .input-section button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(32, 69, 219, 0.4);
+  }
+  
+  .credits-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+  }
+    

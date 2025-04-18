@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './UserProfile.css';
+import logoImage from '../Assets/logo_skillup.png';
+import { useNavigate } from 'react-router-dom';
 
 // ProfileCard component
 const ProfileCard = () => {
@@ -306,13 +308,30 @@ const UserForm = () => {
 
 // Main UserProfile component that combines all sub-components
 const UserProfile = () => {
+    const navigate = useNavigate();
   return (
-    <div className="user-profile">
-      <ProfileCard />
-      <UserForm />
-      <UserBio />
-      <SkillManager />
-      
+    <div>
+      {/* Static Navbar */}
+      <header className="main-header">
+        <div className="skill-header-content">
+          <div className="logo-container">
+            <div className="logo-icon">
+              <img src={logoImage} alt="SkillUp Logo" />
+            </div>
+            <span className="logo-text">SkillUp</span>
+          </div>
+          <nav className="main-navigation">
+            <a href="#" className="nav-link" onClick={() => navigate('/skillSwap')}>Return to Home</a>
+          </nav>
+        </div>
+      </header>
+
+      <div className="user-profile">
+        <ProfileCard />
+        <UserForm />
+        <UserBio />
+        <SkillManager />
+      </div>
     </div>
   );
 };

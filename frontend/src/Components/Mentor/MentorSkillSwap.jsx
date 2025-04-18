@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -27,10 +27,6 @@ const SwapSkillsLandingPage = () => {
   const handleCreateCourse = () => {
     navigate('/create-courses');
     // Future: navigate or open modal for creating a swap
-  };
-
-  const myProfile = () => {
-    navigate('/mentor-profile');
   };
 
   const scrollToFAQ = (e) => {
@@ -64,9 +60,9 @@ const SwapSkillsLandingPage = () => {
           
           {/* Navigation Links */}
           <nav className="main-navigation">
-            <a href="#" className="nav-link">Home</a>
-            <a href="#" className="nav-link">My Courses</a>
-            <a href="#" className="nav-link" onClick={myProfile}>My Profile</a>
+            <Link to="/mentor-skill-swap" className="nav-link">Home</Link>
+            <Link to="/my-courses" className="nav-link">My Courses</Link>
+            <Link to="/mentor-profile" className="nav-link">My Profile</Link>
             <a href="#" className="nav-link" onClick={scrollToContactUs}>ContactUs</a>
             <a href="#" className="nav-link" onClick={scrollToFAQ}>FAQ</a>
           </nav>

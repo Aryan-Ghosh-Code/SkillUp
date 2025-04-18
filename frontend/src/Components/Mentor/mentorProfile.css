@@ -1,0 +1,351 @@
+:root {
+  --primary-color: #000103;
+  --secondary-color: #2045db;
+  --background-dark: #1a1c28;
+  --text-light: #f8f9fa;
+  --text-muted: #9bb9fc;
+  --border-color: rgba(103, 128, 255, 0.15);
+  --hover-shadow: 0 8px 20px rgba(122, 146, 243, 0.5);
+  --focus-shadow: 0 0 0 3px rgba(109, 139, 255, 0.2);
+  --hover-scale: scale(1.02);
+  --transition-speed: 0.3s;
+}
+
+/* Base container styles */
+.profile-card,
+.skill-manager-container,
+.bio-container,
+.user-form-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  background: rgba(27, 30, 44, 0.85);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effects for all containers */
+.profile-card:hover,
+.skill-manager-container:hover,
+.bio-container:hover,
+.user-form-container:hover {
+  transform: var(--hover-scale);
+  box-shadow: var(--hover-shadow);
+}
+
+/* Container specific styles */
+.profile-card {
+  text-align: center;
+  margin-top: 7%;
+}
+
+.skill-manager-container {
+  margin-top: 20px;
+}
+
+.bio-container {
+  margin-top: 20px;
+}
+
+.user-form-container {
+  margin-top: 20px;
+}
+
+/* Common heading styles */
+.profile-card h2,
+.skill-manager-container h2,
+.bio-container h2,
+.user-form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-light);
+  position: relative;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Avatar section */
+.avatar-wrapper {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--border-color);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+}
+
+.avatar-wrapper:hover {
+  border-color: #6d8bff;
+  box-shadow: 0 0 15px rgba(109, 139, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.hidden-input {
+  display: none;
+}
+
+/* Button styles */
+.change-avatar-btn,
+.input-section button,
+.edit-btn,
+.delete-btn,
+.save-btn,
+.bio-button,
+.user-form button {
+  padding: 12px 24px;
+  font-size: 16px;
+  color: var(--text-light);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.change-avatar-btn:hover,
+.input-section button:hover,
+.edit-btn:hover,
+.delete-btn:hover,
+.save-btn:hover,
+.bio-button:hover,
+.user-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(32, 69, 219, 0.4);
+}
+
+/* Input styles */
+.credits-input,
+.input-section input,
+.edit-input,
+.bio-input,
+.user-form input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  transition: all var(--transition-speed);
+}
+
+.credits-input:focus,
+.input-section input:focus,
+.edit-input:focus,
+.bio-input:focus,
+.user-form input:focus {
+  border-color: #6d8bff;
+  outline: none;
+  box-shadow: var(--focus-shadow);
+}
+
+/* Skills list */
+.skills-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-light);
+  transition: all var(--transition-speed) ease;
+}
+
+.skill-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(5px);
+}
+
+/* Bio section */
+.bio-text {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  min-height: 100px;
+  white-space: pre-wrap;
+  color: var(--text-light);
+  transition: all var(--transition-speed) ease;
+}
+
+.bio-text:hover {
+  border-color: #6d8bff;
+  box-shadow: 0 0 15px rgba(109, 139, 255, 0.2);
+}
+
+/* Form styles */
+.user-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: var(--text-muted);
+}
+
+.user-form input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  transition: all var(--transition-speed);
+}
+
+.user-form input:focus {
+  border-color: #6d8bff;
+  outline: none;
+  box-shadow: var(--focus-shadow);
+}
+
+/* Button specific styles */
+.edit-btn {
+  background: linear-gradient(to right, #007bff, #0056b3);
+}
+
+.profile-card h1{
+  color: var(--text-light); 
+  font-weight: 500;
+}
+
+.credits-section label{
+  color: var(--text-light); 
+  font-weight: 500;
+}
+
+.save-btn {
+  background: linear-gradient(to right, #28a745, #1e7e34);
+}
+
+.delete-btn {
+  background: linear-gradient(to right, #dc3545, #a71d2a);
+}
+
+.change-avatar-btn,
+.bio-button,
+.user-form button {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+.bio-button {
+  display: block;
+  margin: 10px auto 0;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: var(--text-light);
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .profile-card,
+  .skill-manager-container,
+  .bio-container,
+  .user-form-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .avatar-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .input-section {
+    flex-direction: column;
+  }
+
+  .input-section button {
+    width: 100%;
+  }
+
+  .skill-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .skill-item .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+}
+
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.input-section input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  transition: all var(--transition-speed);
+}
+
+.input-section button {
+  padding: 12px 24px;
+  font-size: 16px;
+  color: var(--text-light);
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+.input-section button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(32, 69, 219, 0.4);
+}
+
+.credits-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+  
