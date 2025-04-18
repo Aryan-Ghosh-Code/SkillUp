@@ -1,9 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import './ProfileCard.css';
-// import './SkillManager.css';
-// import './UserBio.css';
-// import './UserForm.css';
-   import './UserProfile.css';
+import './UserProfile.css';
 
 // ProfileCard component
 const ProfileCard = () => {
