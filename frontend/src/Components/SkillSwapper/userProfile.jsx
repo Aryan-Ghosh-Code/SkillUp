@@ -2,31 +2,19 @@ import React, { useEffect, useRef, useState } from 'react';
 import './UserProfile.css';
 import logoImage from '../Assets/logo_skillup.png';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../context/AuthContext';
+import useUpdateProfile from '../../hooks/useUpdateProfile';
+import useGetProfile from '../../hooks/useGetProfile';
 
 // ProfileCard component
-const ProfileCard = () => {
-  const [profileImage, setProfileImage] = useState(null);
-  const [credits, setCredits] = useState(300);
+const ProfileCard = ({ profileImage, setProfileImage, credits, setCredits }) => {
   const fileInputRef = useRef();
 
   useEffect(() => {
     const storedImage = localStorage.getItem('profileImage');
-    const storedCredits = localStorage.getItem('credits');
-
     if (storedImage) {
       setProfileImage(storedImage);
     }
-
-    if (storedCredits) {
-      setCredits(Number(storedCredits));
-    }
-
-    // Simulating fetch from backend after 2s delay
-    setTimeout(() => {
-      const fetchedCredits = 300; // Imagine this comes from DB
-      setCredits(fetchedCredits);
-      localStorage.setItem('credits', fetchedCredits);
-    }, 2000);
   }, []);
 
   const handleImageChange = (e) => {
@@ -83,9 +71,8 @@ const ProfileCard = () => {
 };
 
 // SkillManager component
-const SkillManager = () => {
+const SkillManager = ({ skills, setSkills }) => {
   const [skillInput, setSkillInput] = useState('');
-  const [skills, setSkills] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingValue, setEditingValue] = useState('');
 
@@ -167,8 +154,7 @@ const SkillManager = () => {
 };
 
 // UserBio component
-const UserBio = () => {
-  const [bio, setBio] = useState('');
+const UserBio = ({ bio, setBio }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -222,15 +208,11 @@ const calculateAge = (dob) => {
   return age;
 };
 
-const UserForm = () => {
+const UserForm = ({ age, setAge }) => {
+  const { authUser } = useAuthContext();
   const [user, setUser] = useState({
-    username: '',
-    email: '',
     dateOfBirth: '',
-    role: '',
   });
-
-  const [age, setAge] = useState('');
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('userDetails'));
@@ -248,7 +230,6 @@ const UserForm = () => {
     }));
     setAge(calculateAge(newDob));
 
-    // Optional: update localStorage if you want persistence
     const updatedUser = { ...user, dateOfBirth: newDob };
     localStorage.setItem('userDetails', JSON.stringify(updatedUser));
   };
@@ -261,7 +242,7 @@ const UserForm = () => {
           Username:
           <input
             type="text"
-            value={user.username}
+            value={authUser.name}
             readOnly
           />
         </label>
@@ -270,7 +251,7 @@ const UserForm = () => {
           Email:
           <input
             type="email"
-            value={user.email}
+            value={authUser.email}
             readOnly
           />
         </label>
@@ -297,7 +278,7 @@ const UserForm = () => {
           Role:
           <input
             type="text"
-            value={user.role}
+            value={authUser.role}
             readOnly
           />
         </label>
@@ -308,7 +289,35 @@ const UserForm = () => {
 
 // Main UserProfile component that combines all sub-components
 const UserProfile = () => {
-    const navigate = useNavigate();
+  const [profileImage, setProfileImage] = useState('');
+  const [credits, setCredits] = useState(0);
+  const [skills, setSkills] = useState([]);
+  const [age, setAge] = useState('');
+  const [bio, setBio] = useState('');
+  const navigate = useNavigate();
+  const { loading, updateProfile } = useUpdateProfile();
+  const { loading: gettingCredit, profile } = useGetProfile();
+
+  const getCredit = async () => {
+    const data = await profile();
+    setCredits(data);
+  }
+
+  useEffect(() => {
+    getCredit();
+  }, []);
+
+  const handleSave = async () => {
+    const data = {
+      age,
+      about: bio,
+      image: profileImage,
+      skills
+    }
+
+    await updateProfile(data);
+  }
+
   return (
     <div>
       {/* Static Navbar */}
@@ -327,11 +336,33 @@ const UserProfile = () => {
       </header>
 
       <div className="user-profile">
-        <ProfileCard />
-        <UserForm />
-        <UserBio />
-        <SkillManager />
+        <ProfileCard
+          profileImage={profileImage}
+          setProfileImage={setProfileImage}
+          credits={credits}
+          setCredits={setCredits}
+        />
+        <UserForm
+          age={age}
+          setAge={setAge}
+        />
+        <UserBio
+          bio={bio}
+          setBio={setBio}
+        />
+        <SkillManager
+          skills={skills}
+          setSkills={setSkills}
+        />
       </div>
+
+      <button
+        className='bio-button'
+        disabled={loading}
+        onClick={handleSave}
+      >
+        Save Profile
+      </button>
     </div>
   );
 };
