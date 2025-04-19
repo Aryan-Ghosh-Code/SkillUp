@@ -196,7 +196,7 @@ const MentorSkillSwapLandingPage = () => {
             <span className="logo-text">SkillUp</span>
           </div>
           <nav className="main-navigation">
-            <Link to="/mentor-skill-swap" className="nav-link">Home</Link>
+          <a href="#" className="nav-link">Home</a>
             <Link to="/my-courses" className="nav-link">My Courses</Link>
             <Link to="/mentor-profile" className="nav-link">My Profile</Link>
             <a href="#" className="nav-link" onClick={scrollToContactUs}>ContactUs</a>

@@ -278,6 +278,7 @@ const ViewCourses = () => {
                   <span className="detail-label">Price:</span> {course.price}
                 </div>
                 <div className="detail-item">
+                <FaClock className="icon" />
                   <span className="detail-label">Created At:</span> {new Date(course.createdAt).toLocaleDateString()}
                 </div>
               </div>

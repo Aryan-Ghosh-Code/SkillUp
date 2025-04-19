@@ -176,10 +176,10 @@ const MyCourses = () => {
           <div className="courses-grid">
             {courses.map((course) => (
               <div key={course._id} className="course-card">
-                {/* <video>
+                <video>
                 <source src={course.videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
-              </video> */}
+              </video>
                 <h2 className="course-title">Title : {course.title}</h2>
                 <p className="course-description">Description : {course.description}</p>
                 <div className="course-details">

@@ -349,3 +349,14 @@
   margin: 10px 0;
 }
   
+.bio-button{
+  margin-bottom: 30px;
+}
+
+.credits-input{
+  text-align: center;
+}
+
+.bio-container button{
+  margin-bottom: 0px;
+}

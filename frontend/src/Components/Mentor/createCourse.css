@@ -12,7 +12,7 @@
   background: rgba(27, 30, 44, 0.85);
   border-radius: 12px;
   box-sizing: border-box;
-  margin-top:3%;
+  margin-top: 10%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -123,7 +123,7 @@
   padding: 10px 8px;
 }
 
-.file-upload-text{
+.file-upload-text {
   color: #a0a5b1;
   padding-left: 2px;
 }
