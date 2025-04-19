@@ -112,3 +112,34 @@ exports.getMyEnrolledCourses = async (req, res) => {
     res.status(500).json({ error: 'Server Error: Unable to fetch enrolled sessions' });
   }
 };
+
+/**
+ * @desc   Get all courses uploaded by the logged-in mentor
+ * @route  GET /api/courses/uploaded
+ * @access Private (Mentors only)
+ */
+exports.getMyUploadedCourses = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    // Find the profile of the current user
+    const profile = await Profile.findOne({ userId }).populate({
+      path: 'offeredCourses',
+      model: 'Course',
+      populate: {
+        path: 'mentor',
+        model: 'User',
+        select: 'name'
+      }
+    });
+
+    if (!profile) {
+      return res.status(404).json({ msg: 'Profile not found' });
+    }
+
+    res.status(200).json(profile.offeredCourses);
+  } catch (error) {
+    console.error('Get Uploaded Courses Error:', error);
+    res.status(500).json({ msg: 'Server Error: Unable to fetch uploaded courses' });
+  }
+};
