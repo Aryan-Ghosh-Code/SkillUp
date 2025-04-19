@@ -90,3 +90,25 @@ exports.getAllCourses = async (req, res) => {
     res.status(500).json({ msg: 'Server Error: Unable to fetch courses' });
   }
 };
+
+exports.getMyEnrolledCourses = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).populate({
+      path: 'profile',
+      populate: {
+        path: 'purchasedCourses',
+        model: 'Course',
+        populate: {
+          path: 'mentor',
+          model: 'User',
+          select: 'name'
+        }
+      }
+    });
+
+    res.status(200).json(user.profile.purchasedCourses);
+  } catch (error) {
+    console.error('My Enrolled Sessions Error:', error);
+    res.status(500).json({ error: 'Server Error: Unable to fetch enrolled sessions' });
+  }
+};

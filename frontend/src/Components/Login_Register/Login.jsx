@@ -70,7 +70,7 @@ const Login = () => {
                         Forgot Password?
                     </a>
                 </div>
-                <button type='submit'>LogIn</button>
+                <button type='submit'>Login</button>
                 <div className='Register-link'>
                     <p>
                         Don't have an account?<a href='#' onClick={() => { navigate("/register") }}>Register</a>

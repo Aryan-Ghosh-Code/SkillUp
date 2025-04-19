@@ -4,32 +4,42 @@ import { useNavigate } from 'react-router-dom';
 import './viewMySwaps.css';
 import logoImage from '../Assets/logo_skillup.png';
 import useGetMySkillSwapSessions from '../../hooks/useGetMySkillSwapsSessions';
+import useGetMyPurchasedCourse from '../../hooks/useGetMyPurchasedCourse';
 
-const mentoredCourses = [
-  // Sample data for mentored courses
-  {
-    id: 1,
-    title: 'Data Science With Generative AI Course',
-    description: 'Job Assistance | Ticket to career growth in Data Science',
-    price: 299,
-    mentor: 'John Doe',
-    videoUrl: 'https://example.com/video1',
-    createdAt: '2023-01-15'
-  },
-  // Add more courses as needed
-];
+// const mentoredCourses = [
+//   // Sample data for mentored courses
+//   {
+//     id: 1,
+//     title: 'Data Science With Generative AI Course',
+//     description: 'Job Assistance | Ticket to career growth in Data Science',
+//     price: 299,
+//     mentor: 'John Doe',
+//     videoUrl: 'https://example.com/video1',
+//     createdAt: '2023-01-15'
+//   },
+//   // Add more courses as needed
+// ];
 
 const ViewMySwaps = () => {
   const { loading, getMySkillSwap } = useGetMySkillSwapSessions();
+  const { loading:downloading, getMyCourse } = useGetMyPurchasedCourse();
   const [skillSwaps, setSkillSwaps] = useState([]);
+  const [mentorCourses, setMentorCourses] = useState([]);
   const navigate = useNavigate();
+
   const getSkillSwapSessions = async () => {
     const data = await getMySkillSwap();
     setSkillSwaps(data);
   }
 
+  const getMentoredCourses = async () => {
+    const data = await getMyCourse();
+    setMentorCourses(data);
+  }
+
   useEffect(() => {
     getSkillSwapSessions();
+    getMentoredCourses();
   }, []);
 
   return (
@@ -89,16 +99,16 @@ const ViewMySwaps = () => {
         {/* Mentored Courses Section */}
         <h2>Your Mentored Courses</h2>
         <div className="course-cards-container">
-          {mentoredCourses.map((course) => (
+          {mentorCourses.map((course) => (
             <div key={course.id} className="course-card">
               <h3 className="card-title">{course.title}</h3>
               <p className="card-description">{course.description}</p>
               <p className="card-price">Price: ₹{course.price}</p>
-              <p className="card-mentor">Mentor: {course.mentor}</p>
+              <p className="card-mentor">Mentor: {course.mentor.name}</p>
               <p className="card-created">Created on: {new Date(course.createdAt).toLocaleDateString()}</p>
               {course.videoUrl && (
                 <div className="card-video">
-                  <a href={course.videoUrl} target="_blank" rel="noopener noreferrer">Demo Video</a>
+                  <a href={course.videoUrl} target="_blank" rel="noopener noreferrer">Find your Lecture</a>
                 </div>
               )}
             </div>
