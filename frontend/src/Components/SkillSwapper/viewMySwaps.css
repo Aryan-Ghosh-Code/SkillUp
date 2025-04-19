@@ -1,0 +1,280 @@
+:root {
+  --primary-color: #000103;
+  --secondary-color: #2045db;
+  --background-light: #f5f5f7;
+  --text-light: #f8f9fa;
+  --text-muted: #9bb9fc;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+}
+
+.view-my-swaps-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  margin-top: 60px;
+}
+
+.view-my-swaps-container h2 {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+  margin-top: 3%;
+}
+
+.swaps-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.swaps-title {
+  font-size: 32px;
+  color: #ffffff;
+  font-weight: 700;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.swaps-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filter-button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(27, 30, 44, 0.85);
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+  background: var(--secondary-color);
+}
+
+.filter-button.active {
+  background: var(--secondary-color);
+}
+
+.swap-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.swap-card {
+  background: rgba(27, 30, 44, 0.85);
+  border-radius: 12px;
+  padding: 20px;
+  width: 600px;
+  margin-left: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.swap-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(122, 146, 243, 0.5);
+}
+
+.swap-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.status-pending {
+  background-color: var(--warning-color);
+  color: var(--primary-color);
+}
+
+.status-accepted {
+  background-color: var(--success-color);
+  color: var(--text-light);
+}
+
+.status-rejected {
+  background-color: var(--danger-color);
+  color: var(--text-light);
+}
+
+.swap-title {
+  font-size: 24px;
+  color: var(--text-light);
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.swap-description {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 0 0 15px 0;
+}
+
+.swap-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-light);
+}
+
+.detail-label {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.swap-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.action-button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-button {
+  background: var(--secondary-color);
+  color: var(--text-light);
+}
+
+.delete-button {
+  background: var(--danger-color);
+  color: var(--text-light);
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .swaps-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .swaps-filters {
+    flex-wrap: wrap;
+  }
+
+  .swap-card {
+    width: 100%;
+  }
+
+  .swap-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .view-swaps-container {
+    padding: 15px;
+  }
+
+  .swaps-title {
+    font-size: 24px;
+  }
+
+  .swap-title {
+    font-size: 20px;
+  }
+
+  .swap-description {
+    font-size: 14px;
+  }
+}
+
+.course-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.course-card {
+  background: rgba(27, 30, 44, 0.85);
+  border-radius: 12px;
+  padding: 15px;
+  width: 600px;
+  margin-left: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.course-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(122, 146, 243, 0.5);
+}
+
+.course-card .card-title {
+  font-size: 28px;
+  color: var(--text-light);
+  font-weight: 700;
+  margin: 0;
+  padding: 10px 15px;
+}
+
+.course-card .card-description {
+  font-size: 18px;
+  color: var(--text-muted);
+  margin: 0;
+  padding: 5px 15px 15px;
+}
+
+.course-card .card-price,
+.course-card .card-mentor,
+.course-card .card-created {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-light);
+  padding: 8px 15px;
+  font-size: 16px;
+}
+
+.course-card .card-video {
+  margin-top: 10px;
+  padding: 0 15px 10px;
+}
+
+.course-card .card-video a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.course-card .card-video a:hover {
+  color: var(--text-light);
+}

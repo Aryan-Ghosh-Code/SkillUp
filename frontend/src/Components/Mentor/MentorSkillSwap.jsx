@@ -65,6 +65,7 @@ const SwapSkillsLandingPage = () => {
             <Link to="/mentor-profile" className="nav-link">My Profile</Link>
             <a href="#" className="nav-link" onClick={scrollToContactUs}>ContactUs</a>
             <a href="#" className="nav-link" onClick={scrollToFAQ}>FAQ</a>
+            <Link to="/" className="nav-link">Logout</Link>
           </nav>
         </div>
       </header>

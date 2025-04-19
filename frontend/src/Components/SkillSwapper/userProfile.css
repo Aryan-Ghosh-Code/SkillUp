@@ -14,17 +14,22 @@
   border-radius: 12px;
   box-sizing: border-box;
   margin-top: 5%;
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
+  transform: translate(-50%, -50%); */
+  margin: auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+
 }
 
 .profile-card:hover {
   background: rgba(27, 30, 44, 0.85);
   box-shadow: 0 8px 20px rgba(122, 146, 243, 0.5);
-  transform: translate(-50%, -50%) scale(1.03);
+  transform: scale(1.03);
 }
 
 .profile-card h2 {

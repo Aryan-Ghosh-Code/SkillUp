@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { FaTags, FaCoins, FaUser } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 import './viewMySwaps.css';
 import logoImage from '../Assets/logo_skillup.png';
 import useGetMySkillSwapSessions from '../../hooks/useGetMySkillSwapsSessions';
 
-// const mentoredCourses = [
-//   // Sample data for mentored courses
-//   {
-//     id: 1,
-//     title: 'Data Science With Generative AI Course',
-//     description: 'Job Assistance | Ticket to career growth in Data Science',
-//     price: 299,
-//     mentor: 'John Doe',
-//     videoUrl: 'https://example.com/video1',
-//     createdAt: '2023-01-15'
-//   },
-//   // Add more courses as needed
-// ];
+const mentoredCourses = [
+  // Sample data for mentored courses
+  {
+    id: 1,
+    title: 'Data Science With Generative AI Course',
+    description: 'Job Assistance | Ticket to career growth in Data Science',
+    price: 299,
+    mentor: 'John Doe',
+    videoUrl: 'https://example.com/video1',
+    createdAt: '2023-01-15'
+  },
+  // Add more courses as needed
+];
 
 const ViewMySwaps = () => {
   const { loading, getMySkillSwap } = useGetMySkillSwapSessions();
   const [skillSwaps, setSkillSwaps] = useState([]);
-
+  const navigate = useNavigate();
   const getSkillSwapSessions = async () => {
     const data = await getMySkillSwap();
     setSkillSwaps(data);
@@ -43,7 +44,7 @@ const ViewMySwaps = () => {
             <span className="logo-text">SkillUp</span>
           </div>
           <nav className="main-navigation">
-            <a href="#" className="nav-link">Return to Home</a>
+            <a href="#" className="nav-link" onClick={() => navigate('/skillSwap')}>Return to Home</a>
           </nav>
         </div>
       </header>
@@ -86,7 +87,7 @@ const ViewMySwaps = () => {
         </div>
 
         {/* Mentored Courses Section */}
-        {/*<h2>Your Mentored Courses</h2>
+        <h2>Your Mentored Courses</h2>
         <div className="course-cards-container">
           {mentoredCourses.map((course) => (
             <div key={course.id} className="course-card">
@@ -102,7 +103,7 @@ const ViewMySwaps = () => {
               )}
             </div>
           ))}
-        </div>*/}
+        </div>
       </main>
     </div>
   );

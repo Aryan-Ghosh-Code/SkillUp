@@ -16,7 +16,7 @@ import MentorProfile from './Components/Mentor/mentorProfile';
 import ViewMySwaps from './Components/SkillSwapper/viewMySwaps';
 import { useAuthContext } from './context/AuthContext';
 import { Toaster } from 'react-hot-toast';
-
+import MyCourses from './Components/Mentor/myCourses';
 function App() {
   const { authUser } = useAuthContext();
   console.log(authUser);
@@ -37,6 +37,7 @@ function App() {
         <Route path='/user-profile' element={<UserProfile />} />
         <Route path='/mentor-profile' element={<MentorProfile />} />
         <Route path='/view-swap' element={<ViewMySwaps />} />
+        <Route path='/my-courses' element={<MyCourses />} />
       </Routes>
       
       <Toaster />
