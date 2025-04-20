@@ -53,7 +53,7 @@ const ViewMySwaps = () => {
             <div key={swapSession.id} className="swap-card">
               <h2 className="swap-title">{swapSession.title}</h2>
               <p className="swap-description">{swapSession.description}</p>
-              <video className="swap-video" muted>
+              <video className="swap-video" controls muted>
                 <source src={swapSession.videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
