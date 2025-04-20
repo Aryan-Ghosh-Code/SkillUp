@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node server/app.js",
+    "dev": "nodemon server/app.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
+  "type": "commonjs",
   "keywords": [],
   "author": "",
   "license": "ISC",

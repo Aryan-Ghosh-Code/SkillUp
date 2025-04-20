@@ -3,12 +3,11 @@ import toast from "react-hot-toast";
 
 const useGetSkillSwapSessions = () => {
     const [loading, setLoading] = useState(false);
-    const apiUrl = import.meta.env.VITE_API_URL;
 
     const getSkillSwap = async () => {
         setLoading(true);
         try {
-            const res = await fetch(`${apiUrl}/skillswap/sessions`, {
+            const res = await fetch(`/api/skillswap/sessions`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

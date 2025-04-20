@@ -3,12 +3,11 @@ import toast from "react-hot-toast";
 
 const useJoinSkillSwapSessions = () => {
     const [loading, setLoading] = useState(false);
-    const apiUrl = import.meta.env.VITE_API_URL;
 
     const enroll = async (id) => {
         setLoading(true);
         try {
-            const res = await fetch(`${apiUrl}/skillswap/enroll/${id}`, {
+            const res = await fetch(`/api/skillswap/enroll/${id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

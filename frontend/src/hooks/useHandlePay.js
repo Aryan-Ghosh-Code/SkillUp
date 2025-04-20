@@ -3,18 +3,15 @@ import toast from "react-hot-toast";
 
 const useHandlePay = () => {
     const [payLoading, setPayLoading] = useState(false);
-    const apiUrl = import.meta.env.VITE_API_URL;
 
     const handlePay = async (courseId) => {
         const body = {
             courseId
         }
 
-        console.log(body);
-
         setPayLoading(true);
         try {
-            const res = await fetch(`${apiUrl}/payments/create-checkout-session`, {
+            const res = await fetch(`/api/payments/create-checkout-session`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 
 const useUpdateProfile = () => {
     const [loading, setLoading] = useState(false);
-    const apiUrl = import.meta.env.VITE_API_URL;
 
     const updateProfile = async ({
         age,
@@ -13,7 +12,7 @@ const useUpdateProfile = () => {
     }) => {
         setLoading(true);
         try {
-            const res = await fetch(`${apiUrl}/users/profile`, {
+            const res = await fetch(`/api/users/profile`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

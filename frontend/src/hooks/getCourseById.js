@@ -3,12 +3,11 @@ import toast from "react-hot-toast";
 
 const useGetCourseById = () => {
     const [loading, setLoading] = useState(false);
-    const apiUrl = import.meta.env.VITE_API_URL;
 
     const getCourse = async (id) => {
         setLoading(true);
         try {
-            const res = await fetch(`${apiUrl}/courses/course/${id}`, {
+            const res = await fetch(`/api/courses/course/${id}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

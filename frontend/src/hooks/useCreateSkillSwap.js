@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 
 const useCreateSkillSwap = () => {
     const [loading, setLoading] = useState(false);
-    const apiUrl = import.meta.env.VITE_API_URL;
 
     const createSkillSwap = async ({
         title,
@@ -15,7 +14,7 @@ const useCreateSkillSwap = () => {
     }) => {
         setLoading(true);
         try {
-            const res = await fetch(`${apiUrl}/skillswap/create`, {
+            const res = await fetch(`/api/skillswap/create`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

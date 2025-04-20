@@ -21,6 +21,7 @@
     "react-router-dom": "^7.4.0",
     "react-scripts": "^5.0.1",
     "react-scroll": "^1.9.3",
+    "server": "file:..",
     "tailwindcss": "^4.0.17"
   },
   "devDependencies": {

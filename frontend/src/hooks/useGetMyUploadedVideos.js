@@ -3,12 +3,11 @@ import toast from "react-hot-toast";
 
 const useGetMyUploadedVideos = () => {
     const [loading, setLoading] = useState(false);
-    const apiUrl = import.meta.env.VITE_API_URL;
 
     const getMyVideos = async () => {
         setLoading(true);
         try {
-            const res = await fetch(`${apiUrl}/courses/uploaded`, {
+            const res = await fetch(`/api/courses/uploaded`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

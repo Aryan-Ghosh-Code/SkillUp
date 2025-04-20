@@ -3,12 +3,11 @@ import toast from "react-hot-toast";
 
 const useGetProfile = () => {
     const [loading, setLoading] = useState(false);
-    const apiUrl = import.meta.env.VITE_API_URL;
 
     const profile = async () => {
         setLoading(true);
         try {
-            const res = await fetch(`${apiUrl}/users/profile`, {
+            const res = await fetch(`/api/users/profile`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

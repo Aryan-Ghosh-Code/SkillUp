@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const mongoose = require("mongoose")
 const dotenv = require('dotenv');
 const path = require('path');
 const cors = require("cors");
@@ -33,10 +33,15 @@ app.use('/api/skillswap', skillRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/payments', paymentRoutes);
 
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
+
 // Global error handler (optional)
 app.use((err, req, res, next) => {
   console.error('Global Error Handler:', err.stack);
-  res.status(500).json({ msg: 'Server Error' });
+  res.status(500).json({ error: 'Server Error' });
 });
 
 const PORT = process.env.PORT || 5000;
