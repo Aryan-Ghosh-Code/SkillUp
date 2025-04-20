@@ -5,55 +5,21 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import useUpdateProfile from '../../hooks/useUpdateProfile';
 import useGetProfile from '../../hooks/useGetProfile';
-import imageCompression from 'browser-image-compression';
 import toast from 'react-hot-toast';
-
-// Cloudinary upload helper
-const uploadBlobToCloudinary = async (imageBlob) => {
-  const url = "https://api.cloudinary.com/v1_1/dn3looclj/image/upload";
-  const uploadPreset = "SkillUp";
-
-  const formData = new FormData();
-  formData.append("upload_preset", uploadPreset);
-  formData.append("file", imageBlob);
-
-  const response = await fetch(url, {
-    method: "POST",
-    body: formData
-  });
-
-  const data = await response.json();
-  return data.secure_url;
-};
+import { uploadBlobToCloudinary } from '../../utils/uploadBlobtoCloudinary';
 
 // ProfileCard component
 const ProfileCard = ({ profileImage, setProfileImage, credits }) => {
   const fileInputRef = useRef();
 
-  useEffect(() => {
-    const storedImage = localStorage.getItem('profileImage');
-    if (storedImage) {
-      setProfileImage(storedImage);
-    }
-  }, [setProfileImage]);
-
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith('image/')) {
       try {
-        toast.loading('Uploading image...', { id: 'upload' });
+        const img = URL.createObjectURL(file);
 
-        // Compress the image
-        const compressedFile = await imageCompression(file, {
-          maxSizeMB: 1,
-          maxWidthOrHeight: 1024,
-          useWebWorker: true
-        });
-
-        const cloudinaryUrl = await uploadBlobToCloudinary(compressedFile);
+        const cloudinaryUrl = await uploadBlobToCloudinary(img);
         setProfileImage(cloudinaryUrl);
-        localStorage.setItem('profileImage', cloudinaryUrl);
-        toast.success('Image uploaded successfully!', { id: 'upload' });
       } catch (err) {
         toast.error('Failed to upload image', { id: 'upload' });
         console.error(err);
@@ -108,17 +74,6 @@ const SkillManager = ({ skills, setSkills }) => {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingValue, setEditingValue] = useState('');
 
-  useEffect(() => {
-    const storedSkills = JSON.parse(localStorage.getItem('userSkills'));
-    if (storedSkills) {
-      setSkills(storedSkills);
-    }
-  }, [setSkills]);
-
-  useEffect(() => {
-    localStorage.setItem('userSkills', JSON.stringify(skills));
-  }, [skills]);
-
   const handleAddSkill = () => {
     if (skillInput.trim() !== '') {
       setSkills([...skills, skillInput.trim()]);
@@ -148,6 +103,12 @@ const SkillManager = ({ skills, setSkills }) => {
   return (
     <div className="skill-manager-container">
       <h2>Manage Your Skills</h2>
+      {/*<div>
+        {skills.map((skill, _idx) => (
+          <span key={_idx}>{skill}</span>
+        ))}
+      </div>*/}
+
       <div className="input-section">
         <input
           type="text"
@@ -191,21 +152,11 @@ const SkillManager = ({ skills, setSkills }) => {
 const UserBio = ({ bio, setBio }) => {
   const [isEditing, setIsEditing] = useState(false);
 
-  useEffect(() => {
-    const storedBio = localStorage.getItem('userBio');
-    if (storedBio) {
-      setBio(storedBio);
-    }
-  }, [setBio]);
-
   const handleChange = (e) => {
     setBio(e.target.value);
   };
 
   const toggleEdit = () => {
-    if (isEditing) {
-      localStorage.setItem('userBio', bio);
-    }
     setIsEditing(!isEditing);
   };
 
@@ -248,14 +199,6 @@ const UserForm = ({ age, setAge }) => {
     dateOfBirth: '',
   });
 
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('userDetails'));
-    if (storedUser) {
-      setUser(storedUser);
-      setAge(calculateAge(storedUser.dateOfBirth));
-    }
-  }, [setAge]);
-
   const handleDobChange = (e) => {
     const newDob = e.target.value;
     setUser((prevUser) => ({
@@ -263,9 +206,6 @@ const UserForm = ({ age, setAge }) => {
       dateOfBirth: newDob,
     }));
     setAge(calculateAge(newDob));
-
-    const updatedUser = { ...user, dateOfBirth: newDob };
-    localStorage.setItem('userDetails', JSON.stringify(updatedUser));
   };
 
   return (
@@ -330,15 +270,19 @@ const UserProfile = () => {
   const [bio, setBio] = useState('');
   const navigate = useNavigate();
   const { loading, updateProfile } = useUpdateProfile();
-  const { loading: gettingCredit, profile } = useGetProfile();
+  const { loading: gettingProfile, profile } = useGetProfile();
 
-  const getCredit = async () => {
+  const getProfile = async () => {
     const data = await profile();
-    setCredits(data);
+    setProfileImage(data.profile.image)
+    setCredits(data.credit.balance);
+    setSkills(data.profile.skills);
+    setAge(data.profile.age);
+    setBio(data.profile.about);
   };
 
   useEffect(() => {
-    getCredit();
+    getProfile();
   }, []);
 
   const handleSave = async () => {
@@ -377,7 +321,10 @@ const UserProfile = () => {
         />
         <UserForm age={age} setAge={setAge} />
         <UserBio bio={bio} setBio={setBio} />
-        <SkillManager skills={skills} setSkills={setSkills} />
+        <SkillManager
+          skills={skills}
+          setSkills={setSkills}
+        />
       </div>
 
       <button

@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import imageCompression from "browser-image-compression";
 
 export const uploadBlobToCloudinary = async (imageUrl) => {
-    const url = "https://api.cloudinary.com/v1_1/dn3looclj/video/upload";
+    const url = "https://api.cloudinary.com/v1_1/dn3looclj/image/upload";
     const uploadPreset = "SkillUp";
 
     const formData = new FormData();
