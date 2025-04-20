@@ -104,9 +104,9 @@ const ViewMySwaps = () => {
             <div key={course.id} className="course-card">
               <h3 className="card-title">{course.title}</h3>
               <p className="card-description">{course.description}</p>
-              <p className="card-price">Price: ₹{course.price}</p>
-              <p className="card-mentor">Mentor: {course.mentor.name}</p>
-              <p className="card-created">Created on: {new Date(course.createdAt).toLocaleDateString()}</p>
+              <p className="card-price"><FaCoins className="icon" />Price: ₹{course.price}</p>
+              <p className="card-mentor"><FaUser className="icon" />Mentor: {course.mentor.name}</p>
+              <p className="card-created"><FaClock className="icon" />Created on: {new Date(course.createdAt).toLocaleDateString()}</p>
               {course.videoUrl && (
                 <div className="card-video">
                   <a href={course.videoUrl} target="_blank" rel="noopener noreferrer">Find your Lecture</a>

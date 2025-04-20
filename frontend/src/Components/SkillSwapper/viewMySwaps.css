@@ -216,24 +216,31 @@
 }
 
 .course-cards-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 20px;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 8%;
+  padding: 0 20px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .course-card {
   background: rgba(27, 30, 44, 0.85);
   border-radius: 12px;
   padding: 15px;
-  width: 600px;
-  margin-left: 10px;
+  width: 100%;
+  max-width: 500px;
   transition: transform 0.3s, box-shadow 0.3s;
+  justify-self: center;
 }
 
 .course-card:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(122, 146, 243, 0.5);
 }
 
@@ -242,14 +249,13 @@
   color: var(--text-light);
   font-weight: 700;
   margin: 0;
-  padding: 10px 15px;
 }
 
 .course-card .card-description {
   font-size: 18px;
   color: var(--text-muted);
+  font-weight: 600;
   margin: 0;
-  padding: 5px 15px 15px;
 }
 
 .course-card .card-price,
@@ -258,18 +264,16 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--text-light);
-  padding: 8px 15px;
   font-size: 16px;
+  color: var(--text-light);
 }
 
 .course-card .card-video {
-  margin-top: 10px;
-  padding: 0 15px 10px;
+  margin-top: 15px;
 }
 
 .course-card .card-video a {
-  color: var(--secondary-color);
+  color: var(--text-muted);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s;
@@ -277,4 +281,29 @@
 
 .course-card .card-video a:hover {
   color: var(--text-light);
+}
+
+@media (max-width: 600px) {
+  .course-cards-container {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+
+  .course-card {
+    max-width: 100%;
+  }
+
+  .course-card .card-title {
+    font-size: 24px;
+  }
+
+  .course-card .card-description {
+    font-size: 16px;
+  }
+}
+
+.card-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
