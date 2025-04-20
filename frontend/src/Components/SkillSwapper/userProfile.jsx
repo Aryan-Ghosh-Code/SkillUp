@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './UserProfile.css';
+import './userProfile.css';
 import logoImage from '../Assets/logo_skillup.png';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
