@@ -23,7 +23,7 @@ const useEnrollCourse = () => {
 
             if (data) {
                 toast.success("Enrolled in the session successfully");
-                return data;
+                return data.course;
             }
         } catch (error) {
             toast.error(error.message);
