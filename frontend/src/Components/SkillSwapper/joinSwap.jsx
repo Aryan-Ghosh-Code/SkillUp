@@ -4,7 +4,7 @@ import { FaTags, FaCoins, FaUser } from "react-icons/fa";
 import './joinSwap.css';
 import logoImage from '../Assets/logo_skillup.png';
 import useGetSkillSwapSessions from '../../hooks/useGetSkillSwapSessions';
-import useJoinSkillSwapSessions from '../../hooks/usejoinSkillSwapSession';
+import useJoinSkillSwapSessions from '../../hooks/useJoinSkillSwapSession';
 
 const JoinSwap = () => {
   const { loading, getSkillSwap } = useGetSkillSwapSessions();
