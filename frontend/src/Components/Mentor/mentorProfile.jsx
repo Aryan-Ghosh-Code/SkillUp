@@ -374,7 +374,7 @@ const ProfileCard = ({ profileImage, setProfileImage, credits }) => {
         Change Avatar
       </button>
 
-      <div className="credits-section">
+      {/* <div className="credits-section">
         <label>Total Credits</label>
         <input
           type="text"
@@ -382,7 +382,7 @@ const ProfileCard = ({ profileImage, setProfileImage, credits }) => {
           disabled
           className="credits-input"
         />
-      </div>
+      </div> */}
     </div>
   );
 };

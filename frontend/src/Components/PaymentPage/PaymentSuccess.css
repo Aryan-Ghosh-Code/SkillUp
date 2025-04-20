@@ -1,0 +1,87 @@
+/* Global Styles */
+:root {
+    --primary-color: #000103;
+    --secondary-color: #2045db;
+    --background-dark: #1a1c28;
+    --text-light: #f8f9fa;
+    --text-muted: #9bb9fc;
+  }
+  
+  .landing-container {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #000000, #313d80);
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  /* Header Styles */
+  .main-header {
+    /*background-color: #f0ecec;*/
+    
+    padding: 20px 0;
+    box-shadow: 0 1px 3px rgba(199, 164, 164, 0.05);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); 
+    z-index: 1000;
+  }
+  
+  .skill-header-content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-icon {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  
+  .main-navigation {
+    font-weight: 700;
+    display: flex;
+    gap: 32px;
+  }
+  
+  .nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .nav-link:hover {
+    color: var(--text-light);
+  }
+
+  .payment h1{
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    color: var(--text-light);
+  }
