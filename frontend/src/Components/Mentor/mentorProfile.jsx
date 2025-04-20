@@ -132,10 +132,12 @@ const SkillManager = () => {
             ) : (
               <>
                 <span className="skill-text">{skill}</span>
-                <button className="edit-btn" onClick={() => handleEdit(index)}>Edit</button>
+                <div className="buttons">
+                  <button className="edit-btn" onClick={() => handleEdit(index)}>Edit</button>
+                  <button className="delete-btn" onClick={() => handleDelete(index)}>Delete</button>
+                </div>
               </>
             )}
-            <button className="delete-btn" onClick={() => handleDelete(index)}>Delete</button>
           </li>
         ))}
       </ul>

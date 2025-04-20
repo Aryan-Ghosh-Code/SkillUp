@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaTags, FaCoins, FaUser } from "react-icons/fa";
+import { FaTags, FaCoins, FaUser, FaClock } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import './viewMySwaps.css';
 import logoImage from '../Assets/logo_skillup.png';
@@ -89,6 +89,7 @@ const ViewMySwaps = () => {
                   <span className="detail-label">Credit Cost:</span> {swapSession.creditCost}
                 </div>
                 <div className="detail-item">
+                <FaClock className="icon" />
                   <span className="detail-label">Created At:</span> {new Date(swapSession.createdAt).toLocaleDateString()}
                 </div>
               </div>

@@ -38,7 +38,7 @@
 /* Container specific styles */
 .profile-card {
   text-align: center;
-  margin-top: 7%;
+  margin-top: 8%;
 }
 
 .skill-manager-container {
@@ -169,12 +169,29 @@
 .skill-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
   padding: 12px;
   border-bottom: 1px solid var(--border-color);
   color: var(--text-light);
   transition: all var(--transition-speed) ease;
+}
+
+.skill-item .skill-text {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.skill-item .buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-btn,
+.delete-btn {
+  min-width: 100px;
+  display: inline-block;
+  text-align: center;
+  margin: 0 5px;
 }
 
 .skill-item:hover {
