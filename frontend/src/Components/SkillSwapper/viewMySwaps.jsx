@@ -6,20 +6,6 @@ import logoImage from '../Assets/logo_skillup.png';
 import useGetMySkillSwapSessions from '../../hooks/useGetMySkillSwapsSessions';
 import useGetMyPurchasedCourse from '../../hooks/useGetMyPurchasedCourse';
 
-// const mentoredCourses = [
-//   // Sample data for mentored courses
-//   {
-//     id: 1,
-//     title: 'Data Science With Generative AI Course',
-//     description: 'Job Assistance | Ticket to career growth in Data Science',
-//     price: 299,
-//     mentor: 'John Doe',
-//     videoUrl: 'https://example.com/video1',
-//     createdAt: '2023-01-15'
-//   },
-//   // Add more courses as needed
-// ];
-
 const ViewMySwaps = () => {
   const { loading, getMySkillSwap } = useGetMySkillSwapSessions();
   const { loading:downloading, getMyCourse } = useGetMyPurchasedCourse();

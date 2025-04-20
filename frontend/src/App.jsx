@@ -39,7 +39,7 @@
 //         <Route path='/view-swap' element={<ViewMySwaps />} />
 //         <Route path='/my-courses' element={<MyCourses />} />
 //       </Routes>
-      
+
 //       <Toaster />
 //     </div>
 //   );
@@ -72,6 +72,8 @@ import CreateSwap from './Components/SkillSwapper/createSwap';
 import JoinSwap from './Components/SkillSwapper/joinSwap';
 import UserProfile from './Components/SkillSwapper/userProfile';
 import ViewMySwaps from './Components/SkillSwapper/viewMySwaps';
+import PaymentSuccess from './Components/PaymentPage/PaymentSuccess';
+import CourseCard from './Components/SkillSwapper/CourseCard';
 
 // ProtectedRoute Wrapper
 const ProtectedRoute = ({ children }) => {
@@ -171,6 +173,18 @@ function App() {
             <ProtectedRoute>
               <MyCourses />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/payment-success"
+          element={
+            <PaymentSuccess />
+          }
+        />
+        <Route
+          path="/course/:id"
+          element={
+            <CourseCard />
           }
         />
       </Routes>

@@ -21,12 +21,12 @@ exports.createCheckoutSession = async (req, res) => {
       payment_method_types: ['card'],
       line_items: [{
         price_data: {
-          currency: 'usd',
+          currency: 'inr',
           product_data: {
             name: `Course Purchased: ${course.title}`,
             description: `Course Id: ${courseId} | Mentor: ${course.mentor} | Category: ${course.category}`
           },
-          unit_amount: course.price,
+          unit_amount: course.price * 100,
         },
         quantity: 1,
       }],

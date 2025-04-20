@@ -33,7 +33,7 @@ exports.createCourse = async (req, res) => {
     res.status(201).json({ msg: 'Course created successfully', course });
   } catch (error) {
     console.error('Course Creation Error:', error);
-    res.status(500).json({ msg: 'Server Error: Unable to create course' });
+    res.status(500).json({ error: 'Server Error: Unable to create course' });
   }
 };
 
@@ -56,7 +56,7 @@ exports.purchaseCourse = async (req, res) => {
     }
 
     if (course.mentor.equals(userId)) {
-      return res.status(400).json({ msg: 'You cannot enroll in your own Course' });
+      return res.status(400).json({ error: 'You cannot enroll in your own Course' });
     }
 
     // Add the user to the list of enrolled users in the course document
@@ -71,7 +71,7 @@ exports.purchaseCourse = async (req, res) => {
     res.status(200).json({ msg: 'Course purchased successfully', course });
   } catch (error) {
     console.error('Course Purchase Error:', error);
-    res.status(500).json({ msg: 'Server Error: Unable to purchase course' });
+    res.status(500).json({ error: 'Server Error: Unable to purchase course' });
   }
 };
 
@@ -134,12 +134,31 @@ exports.getMyUploadedCourses = async (req, res) => {
     });
 
     if (!profile) {
-      return res.status(404).json({ msg: 'Profile not found' });
+      return res.status(400).json({ error: 'Profile not found' });
     }
 
     res.status(200).json(profile.offeredCourses);
   } catch (error) {
     console.error('Get Uploaded Courses Error:', error);
-    res.status(500).json({ msg: 'Server Error: Unable to fetch uploaded courses' });
+    res.status(500).json({ error: 'Server Error: Unable to fetch uploaded courses' });
   }
 };
+
+exports.getCourseById = async (req, res) => {
+  try {
+    const courseId = req.params.id;
+    const course = await Course.findById(courseId).populate({
+      path: "mentor",
+      model: User
+    });
+
+    if (!course) {
+      return res.status(400).json({ error: "Error in Getting course" });
+    }
+
+    res.status(200).json(course)
+  } catch (error) {
+    console.error('Get Uploaded Courses Error:', error);
+    res.status(500).json({ msg: 'Server Error: Unable to fetch uploaded courses' });
+  }
+}
