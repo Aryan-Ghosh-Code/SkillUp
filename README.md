@@ -10,6 +10,8 @@ Welcome to SkillUp , the ultimate platform for teaching, learning, and growing t
 * **Mentorship Courses**: Learn from pros with structured, paid courses 👩‍🏫👨‍💻
 * **Credit System**: Earn credits by teaching, spend them on learning 🔁💎
 * **Secure & Seamless**: Built with React , Node.js , MongoDB , and secured with JWT , bcryptjs , and Helmet 🔒
+* **Engaging UI/UX:** Modern, intuitive design with animations and interactive elements 🎨✨
+* **Flexible Learning Paths:** Choose between free skill swaps or premium mentor-led courses 🛣️🎯
 * **Payments Made Easy**: Integrated with Stripe for smooth transactions 💳💸
 
 **🎯 Why Choose SkillUp?**
