@@ -26,7 +26,7 @@ SkillUp is more than a platform—it’s a revolution in learning . Start swappi
 ![logo_skillup](https://github.com/user-attachments/assets/0a37638c-1a96-4d9a-bcbb-00a7d1b2ed85)
 
 **Contributors:-**
-* Titas Kabiraj
-* Sagnik Basak
-* Aryan Ghosh
-* Srijit Roy
+* [Titas Kabiraj](https://github.com/titas-kabiraj)
+* [Sagnik Basak](https://github.com/SagnikBasak04)
+* [Aryan Ghosh](https://github.com/Aryan-Ghosh-Code)
+* [Srijit Roy](https://github.com/Srijit27)
